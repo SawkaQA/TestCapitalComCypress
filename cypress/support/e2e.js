@@ -15,8 +15,8 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import registerCypressGrep from '@cypress/grep'
-registerCypressGrep()
+import "cypress-real-events"
+
 
 Cypress.on('uncaught:exception', () => false)
 
