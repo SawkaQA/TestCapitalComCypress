@@ -1,7 +1,7 @@
 /// <reference types = "cypress" />
 
 import testData from '../../fixtures/testData.json';
-import Signin from "../../pageObjects/SignIn";
+import Signin from "../../pageObjects/SignupLogin/SignIn";
 
 describe('Capital.com Login Smoke tests', () => {
     it('Test Login in Capital.com', () => {

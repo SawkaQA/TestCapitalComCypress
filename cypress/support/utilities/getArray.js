@@ -3,4 +3,4 @@ const getArray = ($el) => {
 	return array
 }
 
-export default getArray
+export default getArray;
