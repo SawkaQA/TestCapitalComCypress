@@ -6,6 +6,7 @@ module.exports = defineConfig({
   chromeWebSecurity: false,
   defaultCommandTimeout: 7000,
   requestTimeout: 15000,
+  chromeWebSecurity: false,
 
   e2e: {
     baseUrl: 'https://capital.com/',

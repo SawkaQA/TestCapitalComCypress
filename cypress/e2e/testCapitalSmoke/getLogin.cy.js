@@ -1,6 +1,6 @@
 /// <reference types = "cypress" />
 
-import Login from "../../pageObjects/Login"
+import Login from "../../pageObjects/SignupLogin/Login"
 import testData from '../../fixtures/testData.json';
 
 describe('Capital.com Login Smoke tests', () => {

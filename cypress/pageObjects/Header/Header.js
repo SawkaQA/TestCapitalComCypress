@@ -9,7 +9,7 @@ class Header {
 
     // cy.visit('/')
     // cy.get('.licLangSw__btn').realHover()
-    // cy.get("[href='https://capital.com/it']").eq(1).click()
+    // cy.get(".licLangSw__langs [href='https://capital.com/it']").click()
 
     // Languages
     getEnglishLang = () => cy.get("[href='https://capital.com/']");
@@ -43,12 +43,15 @@ class Header {
     getTChenesseLang = () => cy.get("[href='https://capital.com/cn']");
 
 
-    // Menu
-    getEducationMenu = () => cy.get("[href='https://capital.com/learn-to-trade']");
-    getMarketsMenu = () => cy.get("[href='https://capital.com/learn-to-trade']");
-    getProductsAndServicesMenu = () => cy.get("[href='https://capital.com/learn-to-trade']");
-    getNewsAndAnaliticsMenu = () => cy.get("[href='https://capital.com/learn-to-trade']");
-    getMoreMenu = () => cy.get("[href='https://capital.com/learn-to-trade']");
+    // Nav buttons
+    getNavButtons = () => cy.get('nav[class=cc-nav__wrap]')
+    
+    // MenuButtons
+    getEducationMenu = () => cy.get(':nth-child(1) > .cc-nav__link--lvl1');
+    getMarketsMenu = () => cy.get('nth-child(2) > .cc-nav__link--lvl1');
+    getProductsAndServicesMenu = () => cy.get('nth-child(3) > .cc-nav__link--lvl1');
+    getNewsAndAnaliticsMenu = () => cy.get('nth-child(4) > .cc-nav__link--lvl1');
+    getMoreMenu = () => cy.get('nth-child(5) > .cc-nav__link--lvl1');
 
     // Search field
     getSearchInput = () => cy.get('#headerSearch');
