@@ -1,6 +1,6 @@
 /// <reference types = "cypress" />
 
-import { headerMenuButtonItems, endPointsMenuItems } from '../../fixtures/headerData.json';
+import { headerMenuButtonItems, endPointsMenuItems } from '../../../fixtures/headerData.json';
 
 beforeEach(function () {
     cy.visit('/')

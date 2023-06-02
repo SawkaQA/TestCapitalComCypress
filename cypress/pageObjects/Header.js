@@ -6,11 +6,6 @@ class Header {
     getCountyIcons = () => cy.get('.user-header .user-lang-selection li');
     getLanguageIcons = () => cy.get('.licLangSw__btn');
 
-
-    // cy.visit('/')
-    // cy.get('.licLangSw__btn').realHover()
-    // cy.get(".licLangSw__langs [href='https://capital.com/it']").click()
-
     // Languages
     getEnglishLang = () => cy.get("[href='https://capital.com/']");
     getArabicLang = () => cy.get("[href='https://capital.com/ar']");
@@ -41,7 +36,6 @@ class Header {
     getThaiLang = () => cy.get("[href='https://capital.com/th']");
     getSChenesseLang = () => cy.get("[href='https://capital.com/zh']");
     getTChenesseLang = () => cy.get("[href='https://capital.com/cn']");
-
 
     // Nav buttons
     getNavButtons = () => cy.get('nav[class=cc-nav__wrap]')
