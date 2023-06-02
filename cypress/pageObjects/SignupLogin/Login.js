@@ -1,6 +1,5 @@
 class Login {
-    // visit Capital.com and click to login
-    visit = () => cy.visit("/");
+    // click to login
     getBtnLogIn = () => cy.get("#wg_loginBtn");
 
     // register buttons
@@ -9,7 +8,7 @@ class Login {
 
     // enter email
     enterEmail(value) {
-        const field = cy.get("#l_f_email > .field__control")
+        const field = cy.get("#l_f_email > .field__control");
         field.clear();
         field.type(value);
         return this;
@@ -17,7 +16,7 @@ class Login {
 
     // enter password
     enterPassword(value) {
-        const field = cy.get("#l_f_pass > .field__control")
+        const field = cy.get("#l_f_pass > .field__control");
         field.clear();
         field.type(value);
         return this;
