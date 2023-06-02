@@ -1,9 +1,17 @@
 {
-    "headerMenuButtons": [
+    "headerMenuButtonItems": [
         "Education",
         "Markets",
-        "Ways to trade",
+        "Products and services",
         "News and Analysis",
         "More"
+    ],
+
+    "endPointsMenuItems": [
+        "/learn-to-trade",
+        "/derivative-financial-instruments",
+        "/trading-products",
+        "/financial-news-articles",
+        "/about-us"
     ]
 }
