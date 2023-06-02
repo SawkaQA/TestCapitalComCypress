@@ -62,3 +62,4 @@ class Header {
     // Trade or SignUp
     getBtnSignIn = () => cy.get("[data-type=btn_header]");
 }
+export default Header;
