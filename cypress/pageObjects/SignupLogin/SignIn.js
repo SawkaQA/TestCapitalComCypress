@@ -1,7 +1,6 @@
 class Signin {
 
-    // visit Capital.com and click to sigin
-    visit = () => cy.visit("/");
+    // click to sigin
     getBtnSignIn = () => cy.get("[data-type=btn_header]");
 
     // register buttons
