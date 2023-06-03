@@ -13,4 +13,5 @@
 //         cy.url().should('contain', endPointsMenuItems[idx])
 //         cy.go('back')
 //     })
+
 // })
