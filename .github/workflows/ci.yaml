@@ -19,5 +19,3 @@ jobs:
           path: |
             cypress/videos/
             cypress/screenshots/
-      - name: Allure-report
-        run: npm run smoke
