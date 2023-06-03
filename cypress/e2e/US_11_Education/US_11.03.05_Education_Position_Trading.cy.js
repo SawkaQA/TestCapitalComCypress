@@ -1,20 +1,18 @@
 /// <reference types = "cypress" />
 
 import Login from "../../pageObjects/SignupLogin/Login"
-import Header from "../../pageObjects/Header/Header"
+import Header from "../../pageObjects//Header"
+import { basePage } from "../../pageObjects/basePage";
 
 describe('Education > Menu Item [Position Trading]', () => {   
 
     it('TC_11.03.04_01 | Education > Menu Item [Position Trading] > Test button [Log in] in the header', () => {
         const login = new Login();
         const header = new Header();
-        login.visit();
+
+        basePage.open();
         cy.get('div .licLangSw__btn').realHover();
         cy.get('.js-currCountry').click();
-
-        // cy.get(".licLangSw__countries [href='https://capital.com/?country=au']").click();
-        // cy.get('.licLangSw__btn').realHover();
-
         header.getLanguageIcons().realHover()
         header.getEnglishLang();
         header.getNavButtons().realHover();
@@ -31,14 +29,7 @@ describe('Education > Menu Item [Position Trading]', () => {
         cy.get('a:contains("Forgot password?")').should('be.visible');
         cy.get("button").should("be.visible").and("contain", "Continue");
         cy.get('.checkbox > span').should('be.visible');
-    
-        // Не знаю, как последним шагом закрыть окно login, перепробовала уже много вариантов
-
-        // cy.get('button button-cleared small l_cancel').click();
-        // cy.get('button').click().and("contain", "Cancel");
-        // cy.get("#wg_loginBtn").closest('button button-cleared small l_cancel');
-
-
+        cy.get('#l_overlay .form-container-white .button-cleared').click();
     })
 })
 
