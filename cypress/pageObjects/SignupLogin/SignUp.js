@@ -1,8 +1,8 @@
-class Signin {
+class Signup {
 
     // click to sigin
-    getBtnSignIn = () => cy.get("[data-type=btn_header]");
-    getFormSigIn = () => cy.get('#s_overlay > .form-container-white');
+    getBtnSignUp = () => cy.get("[data-type=btn_header]");
+    getFormSignUp = () => cy.get('#s_overlay > .form-container-white');
 
     // header name
     getHeaderNameSignUp = () => cy.get('[class="signup-form"] .h1');
@@ -31,8 +31,8 @@ class Signin {
         cy.get(".signup-form > .form-container-small-content > form > .btn");
 
     // click buttons for SignIn
-    clickBtnSignIn() {
-        this.getBtnSignIn().click();
+    clickBtnSignUp() {
+        this.getBtnSignUp().click();
     }
 
     clickBtnContinue() {
@@ -40,4 +40,4 @@ class Signin {
     }
 }
 
-export default Signin;
+export default Signup;
