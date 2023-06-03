@@ -3,7 +3,7 @@
 import { basePage } from "../../pageObjects/basePage";
 import Header from "../../pageObjects/Header";
 import Login from "../../pageObjects/SignupLogin/Login";
-import Signin from "../../pageObjects/SignupLogin/SignIn"
+import Signin from "../../pageObjects/SignupLogin/SignUp"
 const header = new Header();
 const login = new Login();
 const signIn = new Signin();
@@ -38,7 +38,7 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
         cy.get('#l_overlay .form-container-white .button-cleared').click();
     });
 
-    it("TC_11.03.05_01 | Education > Menu Item [Swing Trading] > Test button [Sign up] in the header", () => {
+    it("TC_11.03.05_02 | Education > Menu Item [Swing Trading] > Test button [Sign up] in the header", () => {
         header.selectEnglishLang();
         header.hoverCountryAndLang();
         header.clickDropdownCountry();
@@ -46,7 +46,6 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
         header.getEducationMenu().realHover();
         basePage.getSwingTrading().click();
         signIn.clickBtnSignIn();
-
         signIn.getFormSigIn().should("be.visible");
         signIn.getHeaderNameSignUp().should('have.text', 'Sign up')
         cy.get('.signup-form > .form-container-small-header > p > .l_btn_signup')

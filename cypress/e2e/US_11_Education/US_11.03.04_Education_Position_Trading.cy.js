@@ -2,7 +2,7 @@
 
 import Login from "../../pageObjects/SignupLogin/Login";
 import { basePage } from "../../pageObjects/basePage";
-import Signin from "../../pageObjects/SignupLogin/SignIn"
+import Signin from "../../pageObjects/SignupLogin/SignUp"
 
 
 
