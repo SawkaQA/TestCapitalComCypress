@@ -51,35 +51,14 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
 
-            - name: Check Cypress cache
-              run: |
-                  npx cypress cache path
-                  npx cypress cache list
+        - name: Install Cypress
+          run: |
+              npx cypress install
+              npx cypress cache list
 
-            - name: restore / cache the binary
-              id: cache-cypress
-              uses: actions/cache@v1
-              with:
-                  path: ~/.cache/Cypress
-                  key: >-
-                      cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json')
-                      }}
-
-            - name: Install Cypress
-              run: |
-                  npx cypress install
-                  npx cypress cache list
-
-            - name: Run Cypress
-              continue-on-error: true
-              run: npm run cy:run
-              env:
-                  CYPRESS_SPLIT_SPEC_API_KEY: '${{ secrets.SPLIT_SPEC_API_KEY }}'
-
-            - name: Run Cypress Cucumber
-              continue-on-error: true
-              if: always()
-              run: npm run cy:cucumber:run
+        - name: Run Cypress
+          continue-on-error: true
+            run: npm run cy:run
 
             - name: Get Allure history
               uses: actions/checkout@v3
