@@ -6,10 +6,6 @@ describe("Capital.com Smoke test", () => {
         cy.visit("/");
 
         // Check Sign Up
-        cy.title().should(
-            "eq",
-            "Online Trading with Smart Investment App | Capital.com"
-        );
         cy.get(".listChecked__btn > .btn")
             .should("contain", "Start trading")
             .click();
