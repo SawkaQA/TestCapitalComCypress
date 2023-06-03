@@ -1,34 +1,5 @@
-# name: CI
-
-# on:
-#   push:
-#     branches: [main]
-
-# jobs:
-#   run-test:
-#     name: 'Run tests'
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Git clone
-#         uses: actions/checkout@v3
-
-#       - name: Npm install
-#         run: npm ci
-
-#       - name: Npx run
-#         run: npx cypress run --headless
-
-#       - name: Artifacts
-#         uses: actions/upload-artifact@v3
-#         if: failure()
-#         with:
-#           name: cypress-screenshots
-#           path: ./cypress/screenshots
-
-
 name: CI
-on: push
+on: [push, pull_request]
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
@@ -39,12 +10,3 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v5
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: artifacts
-          path: |
-            cypress/videos/
-            cypress/screenshots/
