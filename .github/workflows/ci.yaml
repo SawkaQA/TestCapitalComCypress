@@ -19,17 +19,17 @@ jobs:
       - name: Npx run
         run: npx cypress run --headless
 
+      - name: Allure run
+        run: npm run mytest
+
+      - name: Allure report run
+        run: npm run test
+
       - name: Create test summary
         uses: test-summary/action@v1.0
         if: always()
         with:
           paths: reports/*.xml
-
-      - name: Publish test results
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        if: always()
-        with:
-          files: "reports/*.xml"
 
       - name: Artifacts
         uses: actions/upload-artifact@v2

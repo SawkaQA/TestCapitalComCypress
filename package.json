@@ -6,11 +6,11 @@
   "scripts": {
     "cy:run": "cypress run --config video=false --env allure=true",
     "smoke": "cypress run --browser chrome --spec 'cypress/e2e/US_11_Education/**.js'",
-    "alltest:allure": "cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_11_Education/**.js' --env allure=true",
-    "mytest:allure": "cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_11_Education/US_11.03.05_Education_Swing_Trading.cy.js' --env allure=true",
+    "tests:allure": "cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_11_Education/**.js' --env allure=true",
+    "mytest": "cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_11_Education/US_11.03.05_Education_Swing_Trading.cy.js' --env allure=true",
     "allure:report": "allure generate allure-results --clean -o allure-report",
     "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots cypress/videos || true",
-    "test": "npx npm-run-all mytest:allure allure:report" 
+    "test": "allure generate allure-results --clean -o allure-report"
   },
   "author": "",
   "license": "ISC",
