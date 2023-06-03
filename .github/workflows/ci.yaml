@@ -73,10 +73,10 @@ jobs:
         run: npm install
 
       - name: Run Cypress tests and generate Allure report
-        run: npx cypress run --parallel --group "Allure" --env allure=true
+        run: npx cypress run --env allure=true
 
       - name: Archive Allure report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: allure-report
           path: allure-report
