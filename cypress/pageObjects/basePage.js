@@ -1,7 +1,7 @@
 export class BasePage {
 
     open() {
-        cy.visit("/");
+        cy.visit('/');
     }
 
     // Education Menu

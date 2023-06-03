@@ -11,7 +11,7 @@ const signUp = new Signup();
 describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
     beforeEach(() => {
         basePage.open();
-        header.selectAustraliaCountry();
+        // header.selectAustraliaCountry();
         header.hoverCountryAndLang();
         header.selectEnglishLang();
     })
