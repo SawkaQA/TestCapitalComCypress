@@ -17,8 +17,8 @@ class Header {
 
     // Countries
 
-    getAustriaCountry = () => cy.get('a[href="https://capital.com/?country=at"]');
-    getAndoraCountry = () => cy.get('a[href="https://capital.com/?country=ad"]');
+    getGermanyCountry = () => cy.get('a[href="https://capital.com/?country=de"]');
+    getTurkeyCountry = () => cy.get('a[href="https://capital.com/?country=tr"]');
     getAustralia = () => cy.get('a[href="https://capital.com/?country=au"]');
     getUnitedKindomCountry = () => cy.get('a[href="https://capital.com/?country=gb"]');
 
