@@ -38,22 +38,18 @@
 #                   publish_branch: allure
 #                   publish_dir: allure-history
 
-name: allure-report
-'on':
-    push:
-        branches:
-            - master
+name: CI
+on: [push, pull_request]
 jobs:
-    generate-report:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - name: Download Cypress
-              uses: bahmutov/npm-install@v1
-              with:
-                  install-command: npm i --force
-              env:
-                  CYPRESS_INSTALL_BINARY: 0
+  cypress-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      # Install npm dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
 
             - name: Check Cypress cache
               run: |
