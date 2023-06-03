@@ -1,19 +1,23 @@
-name: CI
-on: push
+name: CI/CD
+on: [pull_request, push]
+    branches:
+      - master
 jobs:
-  cypress-run:
-    runs-on: ubuntu-22.04
+  check:
+    runs-on: ubuntu-20.04
+    environment: Production
+    
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
 
-      - name: Artifacts
+      - name: Upload artifacts
         uses: actions/upload-artifact@v3
-        if: failure()
+        if: always()
         with:
-          name: cypress-screenshots
-          path: ./cypress/screenshots
+          name: artifacts
+          path: |
+            cypress/videos/
+            cypress/screenshots/
+      - name: Allure-report
+        run: npm run smoke
