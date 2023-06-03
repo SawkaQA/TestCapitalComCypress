@@ -3,8 +3,7 @@
 import Login from "../../pageObjects/SignupLogin/Login";
 import { basePage } from "../../pageObjects/basePage";
 import Signin from "../../pageObjects/SignupLogin/SignUp"
-
-
+import Header from "../../pageObjects/Header"
 
 describe("Education > Menu Item [Position Trading]", () => {
     it("TC_11.03.04_01 | Education > Menu Item [Position Trading] > Test button [Log in] in the header", () => {
