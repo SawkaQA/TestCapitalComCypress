@@ -1,6 +1,11 @@
 class Login {
     // click to login
     getBtnLogIn = () => cy.get("#wg_loginBtn");
+    getFormLogIn = () => cy.get("#l_overlay > .form-container-white");
+
+    // header name
+    getHeaderName = () => cy.get("[class='form-container-small-header'] > .h1");
+    // link "Sign up"
 
     // register buttons
     getEmail = () => cy.get("#l_f_email > .field__control");
@@ -8,19 +13,15 @@ class Login {
 
     // enter email
     enterEmail(value) {
-        const field = cy.get("#l_f_email > .field__control");
-        field.clear();
-        field.type(value);
-        return this;
+        this.getEmail().clear().type(value);
     }
 
     // enter password
     enterPassword(value) {
-        const field = cy.get("#l_f_pass > .field__control");
-        field.clear();
-        field.type(value);
-        return this;
+        this.getPassword().clear().type(value);
     }
+
+    getForgotPasswordLink = () => cy.get('[class="l_btn_forgot"]')
 
     getLogMeAfter = () => cy.get("input[name=l_rem]").closest("label");
 

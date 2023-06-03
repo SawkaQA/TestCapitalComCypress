@@ -2,6 +2,10 @@ class Signin {
 
     // click to sigin
     getBtnSignIn = () => cy.get("[data-type=btn_header]");
+    getFormSigIn = () => cy.get('#s_overlay > .form-container-white');
+
+    // header name
+    getHeaderNameSignUp = () => cy.get('[class="signup-form"] .h1');
 
     // register buttons
     getEmail = () => cy.get("#s_overlay-email > .field__control");
