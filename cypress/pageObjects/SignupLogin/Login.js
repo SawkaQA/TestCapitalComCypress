@@ -4,8 +4,7 @@ class Login {
     getFormLogIn = () => cy.get("#l_overlay > .form-container-white");
 
     // header name
-    getHeaderName = () => cy.get("[class='form-container-small-header'] > .h1");
-    // link "Sign up"
+    getHeaderNameLogIn = () => cy.get("[class='form-container-small-header'] > .h1");
 
     // register buttons
     getEmail = () => cy.get("#l_f_email > .field__control");
@@ -26,15 +25,13 @@ class Login {
     getLogMeAfter = () => cy.get("input[name=l_rem]").closest("label");
 
     getBtnContinue = () =>
-        cy.get(
-            ".form-container-white > .form-container-small-content > form > .btn"
-        );
+        cy.get(".form-container-white > .form-container-small-content > form > .btn");
 
+    // methods
     clickLogMeAfter() {
         this.getLogMeAfter().click();
     }
 
-    // click buttons for login
     clickBtnLogIn() {
         this.getBtnLogIn().click();
     }
