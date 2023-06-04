@@ -56,5 +56,6 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
             .should('be.visible')
             .and('have.text', 'Privacy Policy')
         cy.get('#s_overlay .form-container-white .button-cleared').click();
+        header.getMainLogo().realHover().click();
     })
 });

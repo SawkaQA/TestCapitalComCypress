@@ -1,50 +1,16 @@
 class Header {
     // Main logo Capital
-    getMainLogo = () => cy.get(".cc-header__logo [class='cc-logo hideXs']");
+    getMainLogo = () => cy.get('[class="cc-logo hideXs"]');
 
     getCountyIcons = () => cy.get(".user-header .user-lang-selection li");
     getCountryAndLang = () => cy.get("div .licLangSw__btn");
     getDropdownCountry = () => cy.get("input[type=text][class$=hidden]");
 
-    // Methods
-    hoverCountryAndLang() {
-        this.getCountryAndLang().realHover();
-    }
-
-    clickDropdownCountry() {
-        this.getDropdownCountry().click();
-    }
-
     // Countries
-
     getGermanyCountry = () => cy.get('a[href="https://capital.com/?country=de"]');
     getTurkeyCountry = () => cy.get('a[href="https://capital.com/?country=tr"]');
     getAustralia = () => cy.get('a[href="https://capital.com/?country=au"]');
     getUnitedKindomCountry = () => cy.get('a[href="https://capital.com/?country=gb"]');
-
-    selectGermanyCountry() {
-        this.hoverCountryAndLang()
-        this.clickDropdownCountry()
-        this.getGermanyCountry().click()
-    }
-
-    selectTurkeyCountry() {
-        this.hoverCountryAndLang()
-        this.clickDropdownCountry()
-        this.getTurkeyCountry().click();
-    }
-
-    selectAustraliaCountry() {
-        this.hoverCountryAndLang()
-        this.clickDropdownCountry()
-        this.getAustralia().click()
-    }
-
-    selectUnitedKindomCountry() {
-        this.hoverCountryAndLang()
-        this.clickDropdownCountry()
-        this.getUnitedKindomCountry().click()
-    }
 
     // Languages
     selectEnglishLang = () => cy.get("[href='https://capital.com/']");
@@ -89,13 +55,6 @@ class Header {
         cy.get("nth-child(4) > .cc-nav__link--lvl1");
     getMoreMenu = () => cy.get("nth-child(5) > .cc-nav__link--lvl1");
 
-    // Learning hub
-
-    // Market guides
-    
-    // Trading strategiest guide
-
-
     // Search field
     getSearchInput = () => cy.get("#headerSearch");
 
@@ -104,5 +63,43 @@ class Header {
 
     // Trade or SignUp
     getBtnSignIn = () => cy.get("[data-type=btn_header]");
+
+    // Methods
+    hoverCountryAndLang() {
+        this.getCountryAndLang().realHover();
+    }
+
+    clickDropdownCountry() {
+        this.getDropdownCountry().click();
+        return this;
+    }
+
+    selectGermanyCountry() {
+        this.hoverCountryAndLang()
+        this.clickDropdownCountry()
+        this.getGermanyCountry().click()
+        return this;
+    }
+
+    selectTurkeyCountry() {
+        this.hoverCountryAndLang()
+        this.clickDropdownCountry()
+        this.getTurkeyCountry().click();
+        return this;
+    }
+
+    selectAustraliaCountry() {
+        this.hoverCountryAndLang()
+        this.clickDropdownCountry()
+        this.getAustralia().click()
+        return this;
+    }
+
+    selectUnitedKindomCountry() {
+        this.hoverCountryAndLang()
+        this.clickDropdownCountry()
+        this.getUnitedKindomCountry().click()
+        return this;
+    }
 }
 export default Header;
