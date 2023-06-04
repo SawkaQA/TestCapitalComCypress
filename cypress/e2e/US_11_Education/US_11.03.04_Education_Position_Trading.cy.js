@@ -101,11 +101,11 @@ describe("Education > Menu Item [Position Trading]", () => {
         signUp.clickCloseSignUpFormBtn();
     })
 
-    it.only('TC_11.03.04_05 | Educations > Menu item [Position Trading] > Test buttons [Trade] on Widget "Most traded"', () => {
-        
+    it('TC_11.03.04_05 | Educations > Menu item [Position Trading] > Test buttons [Trade] on Widget "Most traded"', () => {
+    
         // bannerBtn.clickTradeBtnOnWidgetMostTraded();
         cy.get('a[href="/trading/platform/spotlight/27045129890124996?side=buy"]').click()
-
+        
         signUp.getFormSignUp().should("be.visible");
         signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
         signUp.getLoginLinkForm().should('be.visible')
