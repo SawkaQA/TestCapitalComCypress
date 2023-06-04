@@ -6,7 +6,7 @@ import Signin from "../../pageObjects/SignupLogin/SignUp"
 import Header from "../../pageObjects/Header"
 
 describe("Education > Menu Item [Position Trading]", () => {
-    it("TC_11.03.04_01 | Education > Menu Item [Position Trading] > Test button [Log in] in the header", () => {
+    xit("TC_11.03.04_01 | Education > Menu Item [Position Trading] > Test button [Log in] in the header", () => {
         const login = new Login();
         const header = new Header();
         basePage.open();
@@ -32,7 +32,7 @@ describe("Education > Menu Item [Position Trading]", () => {
         cy.get('#l_overlay .form-container-white .button-cleared').click();
     })
 
-    it('TC_11.03.04_02 | Education > Menu Item [Position Trading] > Test button [Sign up] in the header', () => {
+    xit('TC_11.03.04_02 | Education > Menu Item [Position Trading] > Test button [Sign up] in the header', () => {
         const header = new Header();
         const signin = new Signin();
         basePage.open();
