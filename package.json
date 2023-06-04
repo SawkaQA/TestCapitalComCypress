@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:run": "npx cypress run --config video=false --env allure=true --browser chrome",
+    "cy:run": "npx cypress run --config video=false --env allure=true",
     "cy:tests:run": "npx cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_11_Education/**.js' --env allure=true",
     "allure:report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
     "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots cypress/videos || true",

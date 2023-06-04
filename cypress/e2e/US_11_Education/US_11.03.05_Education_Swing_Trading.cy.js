@@ -11,11 +11,8 @@ const signUp = new Signup();
 
 describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
     beforeEach(() => {
-        
-        basePage.open(); // open capital.com
-        header.hoverCountryAndLang();
-        header.selectEnglishLang(); // select language
-        header.selectGermanyCountry(); // select country
+        // we can select language and country
+        basePage.open(); // open capital.comß 
     })
 
     it("TC_11.03.05_01 | Education > Menu Item [Swing Trading] > Test button [Log in] in the header", () => {
