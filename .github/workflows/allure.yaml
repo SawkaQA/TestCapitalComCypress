@@ -12,6 +12,9 @@ jobs:
         continue-on-error: true
         run: npm run cy:run
 
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+
       # - name: Generate Allure report
       #   uses: simple-elf/allure-report-action@master
       #   if: always()
