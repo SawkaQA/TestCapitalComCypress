@@ -14,7 +14,6 @@ export class BasePage {
 
     clickSwingTradingOnEducationMenu() {
         this.getSwingTradingOnEducationMenu().realHover().click();
-        return this;
     }
 }
 
