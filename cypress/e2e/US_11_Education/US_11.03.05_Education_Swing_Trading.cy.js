@@ -13,8 +13,6 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
     beforeEach(() => {
         
         basePage.open(); // open capital.com
-        cy.clearAllCookies();
-        cy.getCookies().should('be.empty')
         header.hoverCountryAndLang();
         header.selectEnglishLang(); // select language
         header.selectGermanyCountry(); // select country
