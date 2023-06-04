@@ -1,5 +1,5 @@
 name: allure-report
-'on':
+on:
     push:
         branches:
             - master
