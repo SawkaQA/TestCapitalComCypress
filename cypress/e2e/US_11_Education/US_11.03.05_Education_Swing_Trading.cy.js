@@ -99,7 +99,7 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
         signUp.clickCloseSignUpFormBtn();
     })
 
-    it('TC_11.03.05_05 | Educations > Menu item [Swing trading] > Test buttons [Trade] on Widget "Most traded"', () => {
+    it.only('TC_11.03.05_05 | Educations > Menu item [Swing trading] > Test buttons [Trade] on Widget "Most traded"', () => {
         header.getEducationMenu().realHover();
         basePage.clickSwingTradingOnEducationMenu();
         bannerBtn.clickTradeBtnOnWidgetMostTraded();
