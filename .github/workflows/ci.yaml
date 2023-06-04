@@ -10,11 +10,3 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v5
-
-      - name: Run Cypress
-        continue-on-error: true
-        run: npm run cy:run
-
-      - name: Allure report generate
-        continue-on-error: true
-        run: npm run allure:report
