@@ -1,5 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"failed","Sun Jun 04 14:45:02 MSK 2023","Sun Jun 04 14:45:02 MSK 2023","108","","Education > Menu Item [Position Trading]","","","","TC_11.03.04_02 | Education > Menu Item [Position Trading] > Test button [Sign up] in the header",""
-"passed","Sun Jun 04 14:45:06 MSK 2023","Sun Jun 04 14:45:10 MSK 2023","3896","","US_11.03.05 | Educations > Menu item [Swing Trading]","","","","TC_11.03.05_02 | Education > Menu Item [Swing Trading] > Test button [Sign up] in the header",""
-"passed","Sun Jun 04 14:45:03 MSK 2023","Sun Jun 04 14:45:06 MSK 2023","3612","","US_11.03.05 | Educations > Menu item [Swing Trading]","","","","TC_11.03.05_01 | Education > Menu Item [Swing Trading] > Test button [Log in] in the header",""
-"failed","Sun Jun 04 14:45:02 MSK 2023","Sun Jun 04 14:45:02 MSK 2023","132","","Education > Menu Item [Position Trading]","","","","TC_11.03.04_01 | Education > Menu Item [Position Trading] > Test button [Log in] in the header",""
