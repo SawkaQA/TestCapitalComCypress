@@ -5,6 +5,8 @@ class Login {
 
     // header name
     getHeaderNameLogIn = () => cy.get("[class='form-container-small-header'] > .h1");
+    getSignUpLinkForm = () => cy.get(".form-container-white > .form-container-small-header > p > .l_btn_signup")
+    getCloseLoginFormBtn = () => cy.get('#l_overlay .form-container-white .button-cleared')
 
     // register buttons
     getEmail = () => cy.get("#l_f_email > .field__control");
@@ -38,6 +40,11 @@ class Login {
 
     clickBtnContinue() {
         this.getBtnContinue().dblclick();
+    }
+
+    clickCloseLoginFormBtn() {
+        this.getCloseLoginFormBtn().click()
+        return this;
     }
 }
 

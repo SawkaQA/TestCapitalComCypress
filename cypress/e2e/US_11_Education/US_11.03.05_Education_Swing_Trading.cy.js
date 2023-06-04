@@ -1,6 +1,7 @@
 /// <reference types = "cypress" />
 
 import { basePage } from "../../pageObjects/basePage";
+import { bannerBtn } from "../../pageObjects/BannerButtons";
 import Header from "../../pageObjects/Header";
 import Login from "../../pageObjects/SignupLogin/Login";
 import Signup from "../../pageObjects/SignupLogin/SignUp"
@@ -10,19 +11,23 @@ const signUp = new Signup();
 
 describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
     beforeEach(() => {
-        basePage.open();
+        
+        basePage.open(); // open capital.com
+        cy.clearAllCookies();
+        cy.getCookies().should('be.empty')
         header.hoverCountryAndLang();
-        header.selectEnglishLang();
+        header.selectEnglishLang(); // select language
+        header.selectGermanyCountry(); // select country
     })
 
     it("TC_11.03.05_01 | Education > Menu Item [Swing Trading] > Test button [Log in] in the header", () => {
         header.getEducationMenu().realHover();
-        basePage.getSwingTrading().click();
+        basePage.clickSwingTradingOnEducationMenu();
         login.clickBtnLogIn();
+
         login.getFormLogIn().should("be.visible");
         login.getHeaderNameLogIn().should("contain", "Login");
-        cy.get(".form-container-white > .form-container-small-header > p > .l_btn_signup")
-            .should("be.visible")
+        login.getSignUpLinkForm().should("be.visible")
             .and("include.text", "Sign up");
         login.getEmail().should("be.visible")
             .and("have.attr", "type", "email")
@@ -33,29 +38,91 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
             .should("be.visible")
             .and("have.text", "Forgot password?");
         login.getLogMeAfter().should("be.visible");
-        cy.get('#l_overlay .form-container-white .button-cleared').click();
+        login.clickCloseLoginFormBtn();
     });
 
     it("TC_11.03.05_02 | Education > Menu Item [Swing Trading] > Test button [Sign up] in the header", () => {
         header.getEducationMenu().realHover();
-        basePage.getSwingTrading().click();
+        basePage.clickSwingTradingOnEducationMenu();
         signUp.clickBtnSignUp();
+
         signUp.getFormSignUp().should("be.visible");
-        signUp.getHeaderNameSignUp().should('have.text', 'Sign up')
-        cy.get('.signup-form > .form-container-small-header > p > .l_btn_signup')
-            .should('be.visible')
-            .and('have.text', 'Login')
+        signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
+        signUp.getLoginLinkForm().should('be.visible')
+            .and('have.text', 'Login');
         signUp.getEmail().should('be.visible')
-            .and('have.attr', 'type', 'email')
+            .and('have.attr', 'type', 'email');
         signUp.getPassword().should('be.visible')
-            .and('have.attr', 'type', 'password')
+            .and('have.attr', 'type', 'password');
         signUp.getBtnContinue()
             .should('be.visible')
-            .and("have.text", "Continue")
-        cy.get('.signup-form a[href="https://capital.com/terms-and-policies"]')
+            .and("have.text", "Continue");
+        signUp.getPolicyLink().should('be.visible')
+            .and('have.text', 'Privacy Policy');
+        signUp.clickCloseSignUpFormBtn();
+    })
+
+    it('TC_11.03.05_03 | Education > Menu Item [Swing Trading] > Test button [Start Trading] in Main banner', () => {
+        header.getEducationMenu().realHover();
+        basePage.clickSwingTradingOnEducationMenu();
+        bannerBtn.clickStartTradingBtnOnMainBanner();
+        
+        signUp.getFormSignUp().should("be.visible");
+        signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
+        signUp.getLoginLinkForm().should('be.visible')
+            .and('have.text', 'Login');
+        signUp.getEmail().should('be.visible')
+            .and('have.attr', 'type', 'email');
+        signUp.getPassword().should('be.visible')
+            .and('have.attr', 'type', 'password');
+        signUp.getBtnContinue()
             .should('be.visible')
-            .and('have.text', 'Privacy Policy')
-        cy.get('#s_overlay .form-container-white .button-cleared').click();
-        header.getMainLogo().realHover().click();
+            .and("have.text", "Continue");
+        signUp.getPolicyLink().should('be.visible')
+            .and('have.text', 'Privacy Policy');
+        signUp.clickCloseSignUpFormBtn();
+    })
+
+    it('TC_11.03.05_04 | Education > Menu Item [Swing Trading] > Test button [Try Demo] in Main banner', () => {
+        header.getEducationMenu().realHover();
+        basePage.clickSwingTradingOnEducationMenu();
+        bannerBtn.clickTryDemoBtnOnMainBanner();
+
+        signUp.getFormSignUp().should("be.visible");
+        signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
+        signUp.getLoginLinkForm().should('be.visible')
+            .and('have.text', 'Login');
+        signUp.getEmail().should('be.visible')
+            .and('have.attr', 'type', 'email');
+        signUp.getPassword().should('be.visible')
+            .and('have.attr', 'type', 'password');
+        signUp.getBtnContinue()
+            .should('be.visible')
+            .and("have.text", "Continue");
+        signUp.getPolicyLink().should('be.visible')
+            .and('have.text', 'Privacy Policy');
+        signUp.clickCloseSignUpFormBtn();
+    })
+
+    it('TC_11.03.05_05 | Educations > Menu item [Swing trading] > Test buttons [Trade] on Widget "Most traded"', () => {
+        header.getEducationMenu().realHover();
+        basePage.clickSwingTradingOnEducationMenu();
+        bannerBtn.clickTradeBtnOnWidgetMostTraded();
+
+        signUp.getFormSignUp().should("be.visible");
+        signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
+        signUp.getLoginLinkForm().should('be.visible')
+            .and('have.text', 'Login');
+        signUp.getEmail().should('be.visible')
+            .and('have.attr', 'type', 'email');
+        signUp.getPassword().should('be.visible')
+            .and('have.attr', 'type', 'password');
+        signUp.getBtnContinue()
+            .should('be.visible')
+            .and("have.text", "Continue");
+        signUp.getPolicyLink().should('be.visible')
+            .and('have.text', 'Privacy Policy');
+        signUp.clickCloseSignUpFormBtn();
+        header.clicMainLogo();
     })
 });

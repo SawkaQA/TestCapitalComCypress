@@ -6,6 +6,9 @@ class Signup {
 
     // header name
     getHeaderNameSignUp = () => cy.get('[class="signup-form"] .h1');
+    getLoginLinkForm = () => cy.get('.signup-form > .form-container-small-header > p > .l_btn_signup')
+    getPolicyLink = () => cy.get('.signup-form a[href="https://capital.com/terms-and-policies"]')
+    getCloseSignUpFormBtn = () => cy.get('#s_overlay .form-container-white .button-cleared')
 
     // register buttons
     getEmail = () => cy.get("#s_overlay-email > .field__control");
@@ -37,6 +40,11 @@ class Signup {
 
     clickBtnContinue() {
         this.getBtnContinue().dblclick();
+    }
+
+    clickCloseSignUpFormBtn() {
+        this.getCloseSignUpFormBtn().click()
+        return this;
     }
 }
 

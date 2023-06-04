@@ -49,10 +49,8 @@ class Header {
     // MenuButtons
     getEducationMenu = () => cy.get(":nth-child(1) > .cc-nav__link--lvl1");
     getMarketsMenu = () => cy.get("nth-child(2) > .cc-nav__link--lvl1");
-    getProductsAndServicesMenu = () =>
-        cy.get("nth-child(3) > .cc-nav__link--lvl1");
-    getNewsAndAnaliticsMenu = () =>
-        cy.get("nth-child(4) > .cc-nav__link--lvl1");
+    getProductsAndServicesMenu = () => cy.get("nth-child(3) > .cc-nav__link--lvl1");
+    getNewsAndAnaliticsMenu = () => cy.get("nth-child(4) > .cc-nav__link--lvl1");
     getMoreMenu = () => cy.get("nth-child(5) > .cc-nav__link--lvl1");
 
     // Search field
@@ -65,6 +63,11 @@ class Header {
     getBtnSignIn = () => cy.get("[data-type=btn_header]");
 
     // Methods
+    clicMainLogo(){
+        this.getMainLogo().realHover().click();
+        return this;
+    }
+
     hoverCountryAndLang() {
         this.getCountryAndLang().realHover();
     }
