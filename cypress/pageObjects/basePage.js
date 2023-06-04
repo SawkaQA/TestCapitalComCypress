@@ -13,7 +13,7 @@ export class BasePage {
     // Methods
 
     clickSwingTradingOnEducationMenu() {
-        this.getSwingTradingOnEducationMenu().realHover().click();
+        this.getSwingTradingOnEducationMenu().realHover().click({ force: true });
     }
 }
 
