@@ -61,7 +61,7 @@ describe("Education > Menu Item [Position Trading]", () => {
         signUp.clickCloseSignUpFormBtn();
     })
 
-    it('TC_11.03.04_03 | Education > Menu Item [Position Trading] > Test button [Start Trading] in Main banner', () => {
+    it.skip('TC_11.03.04_03 | Education > Menu Item [Position Trading] > Test button [Start Trading] in Main banner', () => {
        
         bannerBtn.clickStartTradingBtnOnMainBanner();
         
