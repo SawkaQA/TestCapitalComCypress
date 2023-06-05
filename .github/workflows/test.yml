@@ -10,9 +10,7 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v5
-        with:
-           runTests: false
-
+      
   allure:
     name: Generate Allure Report
     runs-on: ubuntu-latest
