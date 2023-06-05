@@ -10,15 +10,12 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v5
-      
-  allure:
-    name: Generate Allure Report
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+
+      - name: Allure report
+        run: npm run allure:report 
           
       - name: Get Allure history
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         if: always()
         continue-on-error: true
         with:
