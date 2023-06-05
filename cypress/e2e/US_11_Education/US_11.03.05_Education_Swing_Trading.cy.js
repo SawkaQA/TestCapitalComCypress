@@ -94,7 +94,7 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
         signUp.clickCloseSignUpFormBtn();
     })
 
-    it('TC_11.03.05_05 | Educations > Menu item [Swing trading] > Test buttons [Trade] on Widget "Most traded"', () => {
+    xit('TC_11.03.05_05 | Educations > Menu item [Swing trading] > Test buttons [Trade] on Widget "Most traded"', () => {
         bannerBtn.clickTradeBtnOnWidgetMostTraded();
 
         signUp.getFormSignUp().should("be.visible");

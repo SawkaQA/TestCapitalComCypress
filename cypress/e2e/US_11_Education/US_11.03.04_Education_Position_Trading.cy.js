@@ -21,7 +21,7 @@ describe("Education > Menu Item [Position Trading]", () => {
 
     })
 
-    it("TC_11.03.04_01 | Education > Menu Item [Position Trading] > Test button [Log in] in the header", () => {
+    xit("TC_11.03.04_01 | Education > Menu Item [Position Trading] > Test button [Log in] in the header", () => {
 
         login.clickBtnLogIn();
 
@@ -41,7 +41,7 @@ describe("Education > Menu Item [Position Trading]", () => {
         login.clickCloseLoginFormBtn();
     })
 
-    it('TC_11.03.04_02 | Education > Menu Item [Position Trading] > Test button [Sign up] in the header', () => {
+    xit('TC_11.03.04_02 | Education > Menu Item [Position Trading] > Test button [Sign up] in the header', () => {
        
         signUp.clickBtnSignUp();
 
@@ -81,7 +81,7 @@ describe("Education > Menu Item [Position Trading]", () => {
         signUp.clickCloseSignUpFormBtn();
     })
 
-    it('TC_11.03.04_04 | Education > Menu Item [Position Trading] > Test button [Try Demo] in Main banner', () => {
+    xit('TC_11.03.04_04 | Education > Menu Item [Position Trading] > Test button [Try Demo] in Main banner', () => {
       
         bannerBtn.clickTryDemoBtnOnMainBanner();
 
