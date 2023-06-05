@@ -2,7 +2,7 @@ export class BannerButtons {
 
     getStartTradingBtnOnMainBanner = () => cy.get('.btn--darkText');
     getTryDemoBtnOnMainBanner = () => cy.get('.btn--emptyblack');
-    getTradeBtnOnWidgetMostTraded = () => cy.get('a[href="/trading/platform/spotlight/27045129890124996?side=buy"]')
+    getTradeBtnOnWidgetMostTraded = () => cy.get('a[href="/trading/platform/spotlight/427748677997764?side=buy"]')
 
     // Footer
     getDownloadOnAppStoreBtn = () => cy.get('.store-apple');
@@ -39,7 +39,7 @@ export class BannerButtons {
     }
 
     clickTradeBtnOnWidgetMostTraded() {
-        this.getTradeBtnOnWidgetMostTraded().realHover().click()
+        this.getTradeBtnOnWidgetMostTraded().click()
         return this;
     }
 }
