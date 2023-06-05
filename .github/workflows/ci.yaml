@@ -1,7 +1,7 @@
 name: CI
-on: [push, pull_request]
+on: [pull_request]
 jobs:
-  allure:
+  allure-report:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
