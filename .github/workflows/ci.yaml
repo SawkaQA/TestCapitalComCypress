@@ -1,7 +1,7 @@
 name: CI
 on: [push, pull_request]
 jobs:
-  cypress-run:
+  allure:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
@@ -12,24 +12,6 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
            runTests: false
-
-      # - name: Check Cypress cache
-      #   run: |
-      #       npx cypress cache path
-      #       npx cypress cache list
-      # - name: restore / cache the binary
-      #   id: cache-cypress
-      #   uses: actions/cache@v3
-      #   with:
-      #       path: ~/.cache/Cypress
-      #       key: >-
-      #           cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json')
-      #           }}
-
-      # - name: Install Cypress
-      #   run: |
-      #       npx cypress install
-      #       npx cypress cache list
 
       - name: Run Cypress tests
         continue-on-error: true
@@ -43,7 +25,7 @@ jobs:
           ref: gh-pages
           path: gh-pages
           
-      - name: Generate allure report
+      - name: Generate Allure report
         uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report
