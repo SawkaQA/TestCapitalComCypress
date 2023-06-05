@@ -8,30 +8,30 @@ jobs:
         uses: actions/checkout@v3
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Cypress run
+      - name: Install dependencies
         uses: cypress-io/github-action@v5
         with:
            runTests: false
 
-      - name: Check Cypress cache
-        run: |
-            npx cypress cache path
-            npx cypress cache list
-      - name: restore / cache the binary
-        id: cache-cypress
-        uses: actions/cache@v3
-        with:
-            path: ~/.cache/Cypress
-            key: >-
-                cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json')
-                }}
+      # - name: Check Cypress cache
+      #   run: |
+      #       npx cypress cache path
+      #       npx cypress cache list
+      # - name: restore / cache the binary
+      #   id: cache-cypress
+      #   uses: actions/cache@v3
+      #   with:
+      #       path: ~/.cache/Cypress
+      #       key: >-
+      #           cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json')
+      #           }}
 
-      - name: Install Cypress
-        run: |
-            npx cypress install
-            npx cypress cache list
+      # - name: Install Cypress
+      #   run: |
+      #       npx cypress install
+      #       npx cypress cache list
 
-      - name: Run Cypress
+      - name: Run Cypress tests
         continue-on-error: true
         run: npm run cy:tests:run
 
@@ -43,7 +43,7 @@ jobs:
           ref: gh-pages
           path: gh-pages
           
-      - name: Allure Report action from marketplace
+      - name: Generate allure report
         uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report
