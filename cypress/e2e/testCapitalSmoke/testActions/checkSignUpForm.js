@@ -51,3 +51,59 @@
 //         cy.get("[class$=f_btn]").should("have.text", "Send reset email");
 //     });
 // });
+
+
+// test yaml
+// name: CI
+// on: [push, pull_request]
+// jobs:
+//   cypress-run:
+//     runs-on: ubuntu-22.04
+//     steps:
+//       - name: Checkout
+//         uses: actions/checkout@v3
+//       # Install npm dependencies, cache them correctly
+//       # and run all Cypress tests
+//       - name: Cypress run
+//         uses: cypress-io/github-action@v5 
+          
+//       - name: Get Allure history
+//         uses: actions/checkout@v3
+//         if: always()
+//         continue-on-error: true
+//         with:
+//           ref: gh-pages
+//           path: gh-pages
+          
+//       - name: Allure Report action from marketplace
+//         uses: simple-elf/allure-report-action@master
+//         if: always()
+//         id: allure-report
+//         with:
+//           allure_results: allure-results
+//           gh_pages: gh-pages
+//           allure_report: allure-report
+//           allure_history: allure-history
+//           keep_reports: 20
+          
+//       - name: Deploy report to Github Pages
+//         if: always()
+//         uses: peaceiris/actions-gh-pages@v3
+//         with:
+//             PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+//             PUBLISH_BRANCH: gh-pages
+//             PUBLISH_DIR: allure-history
+
+
+// # name: CI
+// # on: [push, pull_request]
+// # jobs:
+// #   cypress-run:
+// #     runs-on: ubuntu-22.04
+// #     steps:
+// #       - name: Checkout
+// #         uses: actions/checkout@v3
+// #       # Install npm dependencies, cache them correctly
+// #       # and run all Cypress tests
+// #       - name: Cypress run
+// #         uses: cypress-io/github-action@v5
