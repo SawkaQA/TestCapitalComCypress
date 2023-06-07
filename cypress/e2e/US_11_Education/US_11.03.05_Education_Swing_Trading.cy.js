@@ -20,7 +20,6 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
 
     it("TC_11.03.05_01 | Education > Menu Item [Swing Trading] > Test button [Log in] in the header", () => {
         login.clickBtnLogIn();
-
         login.getFormLogIn().should("be.visible");
         login.getHeaderNameLogIn().should("contain", "Login");
         login.getSignUpLinkForm().should("be.visible")
@@ -39,7 +38,6 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
 
     it("TC_11.03.05_02 | Education > Menu Item [Swing Trading] > Test button [Sign up] in the header", () => {
         signUp.clickBtnSignUp();
-
         signUp.getFormSignUp().should("be.visible");
         signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
         signUp.getLoginLinkForm().should('be.visible')
@@ -77,7 +75,6 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
 
     it('TC_11.03.05_04 | Education > Menu Item [Swing Trading] > Test button [Try Demo] in Main banner', () => {
         bannerBtn.clickTryDemoBtnOnMainBanner();
-
         signUp.getFormSignUp().should("be.visible");
         signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
         signUp.getLoginLinkForm().should('be.visible')
@@ -131,7 +128,6 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
 
     it('TC_11.03.05_09 | Education > Menu Item [Swing Trading] > Test button [Create & verify your account] in the block "Still looking for a broker you can trust?"', () => {
         bannerBtn.clickCreateAndVerifyBtn();
-
         signUp.getFormSignUp().should("be.visible");
         signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
         signUp.getLoginLinkForm().should('be.visible')
