@@ -11,7 +11,6 @@ export class BasePage {
     // [class="cc-nav__dropdown gridRUp gXs "] 
 
     // Methods
-
     clickSwingTradingOnEducationMenu() {
         this.getSwingTradingOnEducationMenu().click();
     }
