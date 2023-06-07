@@ -1,0 +1,44 @@
+name: CI
+on: [pull_request]
+jobs:
+  allure-report:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      # Install npm dependencies, cache them correctly
+      - name: Install dependencies
+        uses: cypress-io/github-action@v5
+        with:
+           runTests: false
+
+      - name: Run Cypress tests
+        continue-on-error: true
+        run: npm run cy:tests:run
+
+      - name: Get Allure history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+          
+      - name: Generate Allure report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+          keep_reports: 30
+          
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+            PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            PUBLISH_BRANCH: gh-pages
+            PUBLISH_DIR: allure-history
