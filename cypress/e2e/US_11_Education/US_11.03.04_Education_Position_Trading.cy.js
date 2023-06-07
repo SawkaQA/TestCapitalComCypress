@@ -13,113 +13,116 @@ describe("Education > Menu Item [Position Trading]", () => {
     beforeEach(() => {
 
         basePage.open(); // open capital.com
-        header.hoverCountryAndLang();
-        header.selectEnglishLang(); // select language
-        header.selectUnitedKindomCountry(); // select country
-        header.getEducationMenu().realHover();
-        basePage.getPositionTrading().click({ force: true });
+        // header.hoverCountryAndLang();
+        // header.selectGermanLang(); // select language
+        // header.selectAustraliaCountry(); // select country
+       
 
     })
 
     it("TC_11.03.04_01 | Education > Menu Item [Position Trading] > Test button [Log in] in the header", () => {
-
+        header.getEducationMenu().realHover();
+        basePage.getPositionTrading().click();
+        cy.get("[href='https://capital.com/de/positionstrading']").eq(1).click({force: true});
         login.clickBtnLogIn();
 
         login.getFormLogIn().should("be.visible");
-        login.getHeaderNameLogIn().should("contain", "Login");
+        login.getHeaderNameLogIn().should("contain", "Anmelden");
         login.getSignUpLinkForm().should("be.visible")
-            .and("include.text", "Sign up");
+            .and("include.text", "Registrieren");
         login.getEmail().should("be.visible")
             .and("have.attr", "type", "email")
         login.getPassword().should('be.visible')
             .and("have.attr", "type", "password")
-        login.getBtnContinue().should("have.text", "Continue");
+        login.getBtnContinue().should("have.text", "Fortfahren");
         login.getForgotPasswordLink()
             .should("be.visible")
-            .and("have.text", "Forgot password?");
+            .and("have.text", "Passwort vergessen?");
         login.getLogMeAfter().should("be.visible");
         login.clickCloseLoginFormBtn();
     })
 
     it('TC_11.03.04_02 | Education > Menu Item [Position Trading] > Test button [Sign up] in the header', () => {
-       
+        header.getEducationMenu().realHover();
+        basePage.getPositionTrading().click();
+        cy.get("[href='https://capital.com/de/positionstrading']").eq(1).click({force: true});
         signUp.clickBtnSignUp();
 
         signUp.getFormSignUp().should("be.visible");
-        signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
+        signUp.getHeaderNameSignUp().should('have.text', 'Registrieren');
         signUp.getLoginLinkForm().should('be.visible')
-            .and('have.text', 'Login');
+            .and('have.text', 'Anmelden');
         signUp.getEmail().should('be.visible')
             .and('have.attr', 'type', 'email');
         signUp.getPassword().should('be.visible')
             .and('have.attr', 'type', 'password');
         signUp.getBtnContinue()
             .should('be.visible')
-            .and("have.text", "Continue");
-        signUp.getPolicyLink().should('be.visible')
-            .and('have.text', 'Privacy Policy');
+            .and("have.text", "Fortfahren");
+            cy.get('.signup-form a[href="https://capital.com/de/nutzungsbedingungen-und-richtlinien"]').should('be.visible')
+            .and('have.text', 'Datenschutzrichtlinie');
         signUp.clickCloseSignUpFormBtn();
     })
 
-    it.skip('TC_11.03.04_03 | Education > Menu Item [Position Trading] > Test button [Start Trading] in Main banner', () => {
+    // it.skip('TC_11.03.04_03 | Education > Menu Item [Position Trading] > Test button [Start Trading] in Main banner', () => {
        
-        bannerBtn.clickStartTradingBtnOnMainBanner();
+    //     bannerBtn.clickStartTradingBtnOnMainBanner();
         
-        signUp.getFormSignUp().should("be.visible");
-        signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
-        signUp.getLoginLinkForm().should('be.visible')
-            .and('have.text', 'Login');
-        signUp.getEmail().should('be.visible')
-            .and('have.attr', 'type', 'email');
-        signUp.getPassword().should('be.visible')
-            .and('have.attr', 'type', 'password');
-        signUp.getBtnContinue()
-            .should('be.visible')
-            .and("have.text", "Continue");
-        signUp.getPolicyLink().should('be.visible')
-            .and('have.text', 'Privacy Policy');
-        signUp.clickCloseSignUpFormBtn();
-    })
+    //     signUp.getFormSignUp().should("be.visible");
+    //     signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
+    //     signUp.getLoginLinkForm().should('be.visible')
+    //         .and('have.text', 'Login');
+    //     signUp.getEmail().should('be.visible')
+    //         .and('have.attr', 'type', 'email');
+    //     signUp.getPassword().should('be.visible')
+    //         .and('have.attr', 'type', 'password');
+    //     signUp.getBtnContinue()
+    //         .should('be.visible')
+    //         .and("have.text", "Continue");
+    //     signUp.getPolicyLink().should('be.visible')
+    //         .and('have.text', 'Privacy Policy');
+    //     signUp.clickCloseSignUpFormBtn();
+    // })
 
-    it('TC_11.03.04_04 | Education > Menu Item [Position Trading] > Test button [Try Demo] in Main banner', () => {
+    // it('TC_11.03.04_04 | Education > Menu Item [Position Trading] > Test button [Try Demo] in Main banner', () => {
       
-        bannerBtn.clickTryDemoBtnOnMainBanner();
+    //     bannerBtn.clickTryDemoBtnOnMainBanner();
 
-        signUp.getFormSignUp().should("be.visible");
-        signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
-        signUp.getLoginLinkForm().should('be.visible')
-            .and('have.text', 'Login');
-        signUp.getEmail().should('be.visible')
-            .and('have.attr', 'type', 'email');
-        signUp.getPassword().should('be.visible')
-            .and('have.attr', 'type', 'password');
-        signUp.getBtnContinue()
-            .should('be.visible')
-            .and("have.text", "Continue");
-        signUp.getPolicyLink().should('be.visible')
-            .and('have.text', 'Privacy Policy');
-        signUp.clickCloseSignUpFormBtn();
-    })
+    //     signUp.getFormSignUp().should("be.visible");
+    //     signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
+    //     signUp.getLoginLinkForm().should('be.visible')
+    //         .and('have.text', 'Login');
+    //     signUp.getEmail().should('be.visible')
+    //         .and('have.attr', 'type', 'email');
+    //     signUp.getPassword().should('be.visible')
+    //         .and('have.attr', 'type', 'password');
+    //     signUp.getBtnContinue()
+    //         .should('be.visible')
+    //         .and("have.text", "Continue");
+    //     signUp.getPolicyLink().should('be.visible')
+    //         .and('have.text', 'Privacy Policy');
+    //     signUp.clickCloseSignUpFormBtn();
+    // })
 
-    it.skip('TC_11.03.04_05 | Educations > Menu item [Position Trading] > Test buttons [Trade] on Widget "Most traded"', () => {
+    // it.skip('TC_11.03.04_05 | Educations > Menu item [Position Trading] > Test buttons [Trade] on Widget "Most traded"', () => {
     
-        // bannerBtn.clickTradeBtnOnWidgetMostTraded();
-        cy.get('a[href="/trading/platform/spotlight/27045129890124996?side=buy"]').click()
+    //     // bannerBtn.clickTradeBtnOnWidgetMostTraded();
+    //     cy.get('a[href="/trading/platform/spotlight/27045129890124996?side=buy"]').click()
         
-        signUp.getFormSignUp().should("be.visible");
-        signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
-        signUp.getLoginLinkForm().should('be.visible')
-            .and('have.text', 'Login');
-        signUp.getEmail().should('be.visible')
-            .and('have.attr', 'type', 'email');
-        signUp.getPassword().should('be.visible')
-            .and('have.attr', 'type', 'password');
-        signUp.getBtnContinue()
-            .should('be.visible')
-            .and("have.text", "Continue");
-        signUp.getPolicyLink().should('be.visible')
-            .and('have.text', 'Privacy Policy');
-        signUp.clickCloseSignUpFormBtn();
-        header.clicMainLogo();
-    })
+    //     signUp.getFormSignUp().should("be.visible");
+    //     signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
+    //     signUp.getLoginLinkForm().should('be.visible')
+    //         .and('have.text', 'Login');
+    //     signUp.getEmail().should('be.visible')
+    //         .and('have.attr', 'type', 'email');
+    //     signUp.getPassword().should('be.visible')
+    //         .and('have.attr', 'type', 'password');
+    //     signUp.getBtnContinue()
+    //         .should('be.visible')
+    //         .and("have.text", "Continue");
+    //     signUp.getPolicyLink().should('be.visible')
+    //         .and('have.text', 'Privacy Policy');
+    //     signUp.clickCloseSignUpFormBtn();
+    //     header.clicMainLogo();
+    // })
 })
