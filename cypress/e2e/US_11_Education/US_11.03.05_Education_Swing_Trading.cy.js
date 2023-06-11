@@ -56,7 +56,6 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
 
     it('TC_11.03.05_03 | Education > Menu Item [Swing Trading] > Test button [Start Trading] in Main banner', () => {
         bannerBtn.clickStartTradingBtnOnMainBanner();
-        
         signUp.getFormSignUp().should("be.visible");
         signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
         signUp.getLoginLinkForm().should('be.visible')
@@ -93,7 +92,6 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
 
     it('TC_11.03.05_05 | Educations > Menu item [Swing trading] > Test buttons [Trade] on Widget "Most traded"', () => {
         bannerBtn.clickTradeBtnOnWidgetMostTraded();
-
         signUp.getFormSignUp().should("be.visible");
         signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
         signUp.getLoginLinkForm().should('be.visible')
