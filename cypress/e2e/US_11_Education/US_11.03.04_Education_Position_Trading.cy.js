@@ -19,9 +19,9 @@ describe("Education > Menu Item [Position Trading]", () => {
         header.hoverCountryAndLang();
         header.clickDropdownCountry({force: true});
         cy.get('a.gI.gXs.gCenter.js-switchCountry');
+        header.selectEnglishLang();
         // header.selectAustraliaCountry();
         // header.getLanguageIcons().realHover();
-        header.selectEnglishLang();
         header.getEducationMenu().realHover();
         basePage.getPositionTrading().click({force: true});
     })
@@ -102,4 +102,23 @@ describe("Education > Menu Item [Position Trading]", () => {
             .and('have.text', 'Privacy Policy');
         signUp.clickCloseSignUpFormBtn();
     })
+
+    it('TC_11.03.04_05 | Educations > Menu item [Position trading] > Test buttons [Trade] on Widget "Most traded"', () => {
+        bannerBtn.clickTradeBtnOnWidgetMostTraded();
+        signUp.getFormSignUp().should("be.visible");
+        signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
+        signUp.getLoginLinkForm().should('be.visible')
+            .and('have.text', 'Login');
+        signUp.getEmail().should('be.visible')
+            .and('have.attr', 'type', 'email');
+        signUp.getPassword().should('be.visible')
+            .and('have.attr', 'type', 'password');
+        signUp.getBtnContinue()
+            .should('be.visible')
+            .and("have.text", "Continue");
+        signUp.getPolicyLink().should('be.visible')
+            .and('have.text', 'Privacy Policy');
+        signUp.clickCloseSignUpFormBtn();
+    })
+
 })
