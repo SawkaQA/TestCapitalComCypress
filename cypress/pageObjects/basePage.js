@@ -15,6 +15,10 @@ export class BasePage {
     clickSwingTradingOnEducationMenu() {
         this.getSwingTradingOnEducationMenu().click();
     }
+
+    clickPositionTrading() {
+        this.getPositionTrading().click();
+    }
 }
 
 export const basePage = new BasePage();
