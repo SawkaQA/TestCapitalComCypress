@@ -4,7 +4,8 @@ import { basePage } from "../../pageObjects/basePage";
 import { bannerBtn } from "../../pageObjects/BannerButtons";
 import Header from "../../pageObjects/Header";
 import Login from "../../pageObjects/SignupLogin/Login";
-import Signup from "../../pageObjects/SignupLogin/SignUp"
+import Signup from "../../pageObjects/SignupLogin/SignUp";
+import links from "../../fixtures/links.json";
 const header = new Header();
 const login = new Login();
 const signUp = new Signup();
@@ -12,18 +13,17 @@ const signUp = new Signup();
 describe("Education > Menu Item [Position Trading]", () => {
     beforeEach(() => {
         basePage.open(); // open capital.com
+        
         // for Unregistered user
         cy.clearCookies();
         cy.get('#onetrust-accept-btn-handler').click();
-        // we can select language and country:
-        header.hoverCountryAndLang();
-        header.clickDropdownCountry({force: true});
-        cy.get('a.gI.gXs.gCenter.js-switchCountry');
+       
+        // we can select language and country: 
+        header.selectAustraliaCountry();
         header.selectEnglishLang();
-        // header.selectAustraliaCountry();
-        // header.getLanguageIcons().realHover();
+
         header.getEducationMenu().realHover();
-        basePage.getPositionTrading().click({force: true});
+        basePage.clickPositionTrading();
     })
 
     it("TC_11.03.04_01 | Education > Menu Item [Position Trading] > Test button [Log in] in the header", () => {
@@ -121,4 +121,14 @@ describe("Education > Menu Item [Position Trading]", () => {
         signUp.clickCloseSignUpFormBtn();
     })
 
-})
+    it.only('TC_11.03.04_06 | Education > Menu Item [Position Trading] > Test button [Download on the App Store] in the block "Sign up and trade smart today"', () => {
+        bannerBtn.clickDownloadOnAppStoreBtn();
+        cy.get('picture#ember3').should('be.visible');
+        cy.get('h1.product-header__title.app-header__title').should('be.visible')
+           .and("have.text", '\n          Capital.com: Trading & Finance\n            17+\n        ');
+        cy.get('.product-header__identity > .link').should('be.visible');
+        cy.visit('https://capital.com/position-trading');
+    })
+
+    })
+

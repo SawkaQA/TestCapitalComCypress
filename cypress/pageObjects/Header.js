@@ -9,7 +9,7 @@ class Header {
     // Countries
     getGermanyCountry = () => cy.get('a[href="https://capital.com/?country=de"]');
     getTurkeyCountry = () => cy.get('a[href="https://capital.com/?country=tr"]');
-    getAustralia = () => cy.get('a[href="https://capital.com/?country=au"]');
+    getAustralia = () => cy.get('span.iconMd.flagFull.flagFull--au'); //a[href="https://capital.com/?country=au"]
     getUnitedKindomCountry = () => cy.get('a[href="https://capital.com/?country=gb"]');
 
     // Languages
