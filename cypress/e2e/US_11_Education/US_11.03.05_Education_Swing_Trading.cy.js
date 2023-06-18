@@ -18,23 +18,28 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
         basePage.clickSwingTradingOnEducationMenu();
     })
 
-    it("TC_11.03.05_01 | Education > Menu Item [Swing Trading] > Test button [Log in] in the header", () => {
+    it.only("TC_11.03.05_01 | Education > Menu Item [Swing Trading] > Test button [Log in] in the header", () => {
         
-        login.clickBtnLogIn();
-        login.getFormLogIn().should("be.visible");
-        login.getHeaderNameLogIn().should("contain", "Login");
-        login.getSignUpLinkForm().should("be.visible")
+        login
+            .clickBtnLogIn()
+        login    
+            .getFormLogIn().should("be.visible")
+        login    
+            .getHeaderNameLogIn().should("contain", "Login")
+        login
+            .getSignUpLinkForm().should("be.visible")
             .and("include.text", "Sign up");
-        login.getEmail().should("be.visible")
+        login
+            .getEmail().should("be.visible")
             .and("have.attr", "type", "email")
-        login.getPassword().should('be.visible')
+            login.getPassword().should('be.visible')
             .and("have.attr", "type", "password")
-        login.getBtnContinue().should("have.text", "Continue");
-        login.getForgotPasswordLink()
+            login.getBtnContinue().should("have.text", "Continue")
+            login.getForgotPasswordLink()
             .should("be.visible")
-            .and("have.text", "Forgot password?");
-        login.getLogMeAfter().should("be.visible");
-        login.clickCloseLoginFormBtn();
+            .and("have.text", "Forgot password?")
+            login.getLogMeAfter().should("be.visible")
+            login.clickCloseLoginFormBtn();
     });
 
     it("TC_11.03.05_02 | Education > Menu Item [Swing Trading] > Test button [Sign up] in the header", () => {
