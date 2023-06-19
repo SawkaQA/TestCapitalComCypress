@@ -121,14 +121,43 @@ describe("Education > Menu Item [Position Trading]", () => {
         signUp.clickCloseSignUpFormBtn();
     })
 
-    it.only('TC_11.03.04_06 | Education > Menu Item [Position Trading] > Test button [Download on the App Store] in the block "Sign up and trade smart today"', () => {
+    it('TC_11.03.04_06 | Education > Menu Item [Position Trading] > Test button [Download on the App Store] in the block "Sign up and trade smart today"', () => {
         bannerBtn.clickDownloadOnAppStoreBtn();
+        cy.url().should('eq', links.downloadAppStoreLink)
         cy.get('picture#ember3').should('be.visible');
         cy.get('h1.product-header__title.app-header__title').should('be.visible')
            .and("have.text", '\n          Capital.com: Trading & Finance\n            17+\n        ');
         cy.get('.product-header__identity > .link').should('be.visible');
         cy.visit('https://capital.com/position-trading');
     })
-
+    
+    it('TC_11.03.04_07 | Education > Menu Item [Position Trading] > Test button [Get it on Google Play] in the block "Sign up and trade smart today"', () => {
+        bannerBtn.clickDownloadOnGooglePlayLink();
+        cy.url().should('eq', links.downloadGooglePlayLink);
+        cy.get('a.f0UV3d').should('be.visible');
+        cy.get('h1.Fd93Bb.F5UCq.p5VxAd').should('be.visible')
+           .and("have.text", 'Online Broker - Capital.com');
+        cy.get('div.Vbfug.auoIOc').should('be.visible');
+        cy.visit('https://capital.com/position-trading');
     })
 
+    // it('TC_11.03.04_08 | Education > Menu Item [Position Trading] > Test button [Explore Web Platform] in the block "Sign up and trade smart today"', () => {
+    //     bannerBtn.clickExploreWebPlatformLink();
+    //     cy.url().should('eq', links.exploreWebPlatformLink);
+    //     signUp.getFormSignUp().should("be.visible");
+    //     signUp.getHeaderNameSignUp().should('have.text', 'Sign up');
+    //     signUp.getLoginLinkForm().should('be.visible')
+    //         .and('have.text', 'Login');
+    //     signUp.getEmail().should('be.visible')
+    //         .and('have.attr', 'type', 'email');
+    //     signUp.getPassword().should('be.visible')
+    //         .and('have.attr', 'type', 'password');
+    //     signUp.getBtnContinue()
+    //         .should('be.visible')
+    //         .and("have.text", "Continue");
+    //     signUp.getPolicyLink().should('be.visible')
+    //         .and('have.text', 'Privacy Policy');
+    //     signUp.clickCloseSignUpFormBtn();
+    // })
+
+})
