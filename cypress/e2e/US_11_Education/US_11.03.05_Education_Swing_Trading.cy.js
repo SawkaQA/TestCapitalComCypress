@@ -32,14 +32,18 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
         login
             .getEmail().should("be.visible")
             .and("have.attr", "type", "email")
-            login.getPassword().should('be.visible')
+        login.getPassword().should('be.visible')
             .and("have.attr", "type", "password")
-            login.getBtnContinue().should("have.text", "Continue")
-            login.getForgotPasswordLink()
+        login
+            .getBtnContinue().should("have.text", "Continue")
+        login
+            .getForgotPasswordLink()
             .should("be.visible")
             .and("have.text", "Forgot password?")
-            login.getLogMeAfter().should("be.visible")
-            login.clickCloseLoginFormBtn();
+        login
+            .getLogMeAfter().should("be.visible")
+        login
+            .clickCloseLoginFormBtn();
     });
 
     it("TC_11.03.05_02 | Education > Menu Item [Swing Trading] > Test button [Sign up] in the header", () => {
