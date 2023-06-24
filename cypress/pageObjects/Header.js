@@ -7,10 +7,11 @@ class Header {
     getDropdownCountry = () => cy.get("input[type=text][class$=hidden]");
 
     // Countries
-    getGermanyCountry = () => cy.get('a[href="https://capital.com/?country=de"]');
-    getTurkeyCountry = () => cy.get('a[href="https://capital.com/?country=tr"]');
-    getAustralia = () => cy.get('span.iconMd.flagFull.flagFull--au'); //a[href="https://capital.com/?country=au"]
-    getUnitedKindomCountry = () => cy.get('a[href="https://capital.com/?country=gb"]');
+    getGermanyCountry = () => cy.get('li.js-analyticsClick[data-type="nav_country_germany"]');  //('a[href="https://capital.com/?country=de"]');
+    getTurkeyCountry = () => cy.get('li.js-analyticsClick[data-type="nav_country_turkey"]'); //('a[href="https://capital.com/?country=tr"]');
+    getAustralia = () => cy.get('li.js-analyticsClick[data-type="nav_country_australia"]'); //a[href="https://capital.com/?country=au"]
+    getUnitedKindomCountry = () => cy.get('li.js-analyticsClick[data-type="nav_country_united_kingdom"]') //('a[href="https://capital.com/?country=gb"]');
+    getSpainCountry = () => cy.get('li.js-analyticsClick[data-type="nav_country_spain"]');
 
     // Languages
     selectEnglishLang = () => cy.get("[href='https://capital.com/']");
@@ -102,6 +103,13 @@ class Header {
         this.hoverCountryAndLang()
         this.clickDropdownCountry()
         this.getUnitedKindomCountry().click()
+        return this;
+    }
+
+    selectSpainCountry() {
+        this.hoverCountryAndLang()
+        this.clickDropdownCountry()
+        this.getSpainCountry().click()
         return this;
     }
 }
