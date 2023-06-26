@@ -18,7 +18,6 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
         basePage.clickSwingTradingOnEducationMenu();
     });
 
-    
     it("TC_11.03.05_01 | Education > Menu Item [Swing Trading] > Test button [Log in] in the header", () => {
         login.clickBtnLogIn();
         login.getFormLogIn().should("be.visible");
@@ -189,6 +188,6 @@ describe("US_11.03.05 | Educations > Menu item [Swing Trading]", () => {
             .should("be.visible")
             .and("have.text", "Privacy Policy");
         signUp.clickCloseSignUpFormBtn();
-        header.clicMainLogo();
+        header.clickMainLogo();
     });
 });

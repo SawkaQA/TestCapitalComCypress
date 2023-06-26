@@ -64,7 +64,7 @@ class Header {
     getBtnSignIn = () => cy.get("[data-type=btn_header]");
 
     // Methods
-    clicMainLogo(){
+    clickMainLogo(){
         this.getMainLogo().realHover().click();
         return this;
     }

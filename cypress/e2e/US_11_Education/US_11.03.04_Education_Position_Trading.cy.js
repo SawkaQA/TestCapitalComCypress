@@ -290,7 +290,7 @@ describe("Education > Menu Item [Position Trading]", () => {
                 .should("be.visible")
                 .and("have.text", "Privacy Policy");
             signUp.clickCloseSignUpFormBtn();
-            header.clicMainLogo();
+            header.clickMainLogo();
         });
     });
 })
