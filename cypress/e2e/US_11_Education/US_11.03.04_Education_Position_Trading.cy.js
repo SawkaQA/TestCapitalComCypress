@@ -1,5 +1,6 @@
 /// <reference types = "cypress" />
 // import { selectLanguageUrl, langNameList } from "../../fixtures/language.json"
+// import testData from "../../../fixtures/testData.json";
 import { basePage } from "../../pageObjects/basePage";
 import { bannerBtn } from "../../pageObjects/BannerButtons";
 import Header from "../../pageObjects/Header";
@@ -11,168 +12,146 @@ const login = new Login();
 const signUp = new Signup();
 
 describe("Education > Menu Item [Position Trading]in All Role", () => {
+
     const languages = [
         { langName: "English", langUrl: "a.js-analyticsClick[data-type='nav_lang_en']" },
-        { langName: "Español", langUrl: "a.js-analyticsClick[data-type='nav_lang_es']" }
+        { langName: "Polski", langUrl: "a.js-analyticsClick[data-type='nav_lang_pl']" }
     ]
 
     beforeEach(() => {
 
         basePage.open(); // open capital.com
-        //    for Unregistered user
         cy.clearCookies();
         cy.get('#onetrust-accept-btn-handler').click();
-
-        header.selectSpainCountry();
+        header.selectPolandCountry();
 
     });
 
     languages.forEach((language) => {
-
         it(`TC_11.03.04_01_UnReg | Education > Menu Item [Position Trading] > Test button [Log in] in the header of ${language.langName} language`, () => {
 
-            header.getCountryAndLang().click({ force: true });
-            cy.get(language.langUrl).click({ force: true });
+
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
             cy.get('span.js-langName').should('include.text', `${language.langName}`);
 
             header.getEducationMenu().realHover();
             basePage.clickPositionTrading();
             login.clickBtnLogIn();
-            cy.log('The  form “Login” is opened, in which contains:');
             login.getFormLogIn()
                 .should("be.visible");
-            cy.log('Name of the form “Login“');
             login.getHeaderNameLogIn()
                 .should("contain", "Login");
-            cy.log('Link “Sign up” is visible');
             login.getSignUpLinkForm()
                 .should("be.visible")
                 .and("include.text", "Sign up");
-            cy.log('Input field “Email address“ is visible and have attribut - email');
             login.getEmail()
                 .should("be.visible")
                 .and("have.attr", "type", "email")
-            cy.log('Input field “Password“ is visible and have attribut - password');
             login.getPassword()
                 .should('be.visible')
                 .and("have.attr", "type", "password")
-            cy.log('The button “Continue“ is visible');
             login.getBtnContinue()
                 .should("have.text", "Continue");
-            cy.log('Link “Forgot password?“ is visible');
             login.getForgotPasswordLink()
                 .should("be.visible")
                 .and("have.text", "Forgot password?");
-            cy.log('Check box “Log me out after 7 days“ is visible')
             login.getLogMeAfter()
                 .should("be.visible");
             login.clickCloseLoginFormBtn();
         });
 
         it(`TC_11.03.04_01_UnAuth | Education > Menu Item [Position Trading] > Test button [Log in] in the header of ${language.langName} language`, () => {
-            header.getCountryAndLang().click({ force: true });
-            cy.get(language.langUrl).click({ force: true });
-            cy.get('span.js-langName').should('include.text', `${language.langName}`);
-            cy.log('preconditions - for UnAutorized user');
+
             cy.fixture('testData').then((testData) => {
                 login.clickBtnLogIn();
                 login.enterEmail(testData.email);
                 login.enterPassword(testData.password);
                 login.clickLogMeAfter();
                 login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
                 cy.wait(10000);
-                basePage.open();
-                cy.wait(10000);
-                cy.get('button#wg_userarea').click({ force: true });
-                cy.get('#userPanel').should('be.visible');
-                cy.get('.logout-user').click({ force: true });
-            })
+                cy.get('#wg_userarea').click();
+                cy.get('.logout-user').click();
+            });
+
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
 
             header.getEducationMenu().realHover();
             basePage.clickPositionTrading();
             login.clickBtnLogIn();
-            cy.log('The  form “Login” is opened, in which contains:');
             login.getFormLogIn()
                 .should("be.visible");
-            cy.log('Name of the form “Login“');
             login.getHeaderNameLogIn()
                 .should("contain", "Login");
-            cy.log('Link “Sign up” is visible');
             login.getSignUpLinkForm()
                 .should("be.visible")
                 .and("include.text", "Sign up");
-            cy.log('Input field “Email address“ is visible and have attribut - email');
             login.getEmail()
                 .should("be.visible")
                 .and("have.attr", "type", "email")
-            cy.log('Input field “Password“ is visible and have attribut - password');
             login.getPassword()
                 .should('be.visible')
                 .and("have.attr", "type", "password")
-            cy.log('The button “Continue“ is visible');
             login.getBtnContinue()
                 .should("have.text", "Continue");
-            cy.log('Link “Forgot password?“ is visible');
             login.getForgotPasswordLink()
                 .should("be.visible")
                 .and("have.text", "Forgot password?");
-            cy.log('Check box “Log me out after 7 days“ is visible')
             login.getLogMeAfter()
                 .should("be.visible");
             login.clickCloseLoginFormBtn();
         });
 
         it(`TC_11.03.04_01_Auth | Education > Menu Item [Position Trading] > Test button [Log in] in the header of ${language.langName} language`, () => {
-            header.getCountryAndLang().click({ force: true });
-            cy.get(language.langUrl).click({ force: true });
-            cy.get('span.js-langName').should('include.text', `${language.langName}`);
-            cy.log('preconditions - for Autorized user');
             cy.fixture('testData').then((testData) => {
                 login.clickBtnLogIn();
                 login.enterEmail(testData.email);
                 login.enterPassword(testData.password);
                 login.clickLogMeAfter();
                 login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
                 cy.wait(10000);
-                basePage.open();
-                cy.wait(10000);
-                cy.log('The button [Log in] is not exist')
-                login.getBtnLogIn().should('not.be.visible');
             });
+
+            header.getCountryAndLang().click();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            login.getBtnLogIn().should('not.be.visible');
         })
 
 
         it(`TC_11.03.04_02_UnReg | Education > Menu Item [Position Trading] > Test button [Trade] in the header of ${language.langName} language`, () => {
-            header.getCountryAndLang().click({ force: true });
-            cy.get(language.langUrl).click({ force: true });
+
+            header.getCountryAndLang().click();
+            cy.get(language.langUrl).click();
             cy.get('span.js-langName').should('include.text', `${language.langName}`);
 
             header.getEducationMenu().realHover();
             basePage.clickPositionTrading();
             signUp.getBtnSignUp().click();
-            cy.log('The  form “Sign up” is opened, in which contains:');
             signUp.getFormSignUp()
                 .should("be.visible");
-            cy.log('Name of the form “Sign up“');
             signUp.getHeaderNameSignUp()
                 .should('have.text', 'Sign up')
-            cy.log('Link “Login” is visible')
             signUp.getLoginLinkForm()
                 .should('be.visible')
                 .and('have.text', 'Login');
-            cy.log('Input field “Email address“ is visible')
             signUp.getEmail()
                 .should('be.visible')
                 .and('have.attr', 'type', 'email');
-            cy.log('Input field “Password“ is visible')
             signUp.getPassword()
                 .should('be.visible')
                 .and('have.attr', 'type', 'password');
-            cy.log('The button “Continue“ is visible')
             signUp.getBtnContinue()
                 .should('be.visible')
                 .and("have.text", "Continue");
-            cy.log('Link “Privacy Policy“ is visible')
             signUp.getPolicyLink()
                 .should('be.visible')
                 .and('have.text', 'Privacy Policy');
@@ -180,50 +159,43 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
         });
 
         it(`TC_11.03.04_02_UnAuth | Education > Menu Item [Position Trading] > Test button [Trade] in the header of ${language.langName} language`, () => {
-            header.getCountryAndLang().click({ force: true });
-            cy.get(language.langUrl).click({ force: true });
-            cy.get('span.js-langName').should('include.text', `${language.langName}`);
-            cy.log('preconditions - for UnAutorized user');
             cy.fixture('testData').then((testData) => {
                 login.clickBtnLogIn();
                 login.enterEmail(testData.email);
                 login.enterPassword(testData.password);
                 login.clickLogMeAfter();
                 login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
                 cy.wait(10000);
-                basePage.open();
-                cy.wait(10000);
-                cy.get('button#wg_userarea').click({ force: true });
-                cy.get('#userPanel').should('be.visible');
-                cy.get('.logout-user').click({ force: true });
-            })
+                cy.get('#wg_userarea').click();
+                cy.get('.logout-user').click();
+            });
+
+            header.getCountryAndLang().click();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
 
             header.getEducationMenu().realHover();
             basePage.clickPositionTrading();
             signUp.getBtnSignUp().click();
-            cy.log('The  form “Sign up” is opened, in which contains:');
+
             signUp.getFormSignUp()
                 .should("be.visible");
-            cy.log('Name of the form “Sign up“');
             signUp.getHeaderNameSignUp()
                 .should('have.text', 'Sign up')
-            cy.log('Link “Login” is visible')
             signUp.getLoginLinkForm()
                 .should('be.visible')
                 .and('have.text', 'Login');
-            cy.log('Input field “Email address“ is visible')
             signUp.getEmail()
                 .should('be.visible')
                 .and('have.attr', 'type', 'email');
-            cy.log('Input field “Password“ is visible')
             signUp.getPassword()
                 .should('be.visible')
                 .and('have.attr', 'type', 'password');
-            cy.log('The button “Continue“ is visible')
             signUp.getBtnContinue()
                 .should('be.visible')
                 .and("have.text", "Continue");
-            cy.log('Link “Privacy Policy“ is visible')
             signUp.getPolicyLink()
                 .should('be.visible')
                 .and('have.text', 'Privacy Policy');
@@ -231,85 +203,222 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
         });
 
         it(`TC_11.03.04_02_Auth | Education > Menu Item [Position Trading] > Test button [Log in] in the header of ${language.langName} language`, () => {
-            header.getCountryAndLang().click({ force: true });
-            cy.get(language.langUrl).click({ force: true });
-            cy.get('span.js-langName').should('include.text', `${language.langName}`);
-            cy.log('preconditions - for Autorized user');
             cy.fixture('testData').then((testData) => {
                 login.clickBtnLogIn();
                 login.enterEmail(testData.email);
                 login.enterPassword(testData.password);
                 login.clickLogMeAfter();
                 login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
                 cy.wait(10000);
-                basePage.open();
-                cy.wait(10000);
-                cy.log('The button [Sign up] is not exist')
-                signUp.getBtnSignUp().should('not.be.visible');
             });
+
+            header.getCountryAndLang().click();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            signUp.getBtnSignUp().click();
+            signUp.getBtnSignUp().should('not.be.visible');
         })
 
 
+        it(`TC_11.03.04_03_UnReg | Education > Menu Item [Position Trading] > Test button [Start Trading] in Main banner of ${language.langName} language`, () => {
 
-        //         it(`TC_11.03.04_03_UnReg | Education > Menu Item [Position Trading] > Test button [Start Trading] in Main banner of ${language.langName} language`, () => {
-        //             header.getCountryAndLang().click({ force: true });
-        //             cy.get(language.langUrl).click({ force: true });
-        //             cy.get('span.js-langName').should('include.text', `${language.langName}`);
+            header.getCountryAndLang().click();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
 
-        //             header.getEducationMenu().realHover();
-        //             basePage.clickPositionTrading();
-        //             bannerBtn.clickStartTradingBtnOnMainBanner();
-        //             signUp.getFormSignUp()
-        //                 .should("be.visible");
-        //             signUp.getHeaderNameSignUp()
-        //                 .should('have.text', 'Sign up');
-        //             signUp.getLoginLinkForm()
-        //                 .should('be.visible')
-        //                 .and('have.text', 'Login');
-        //             signUp.getEmail()
-        //                 .should('be.visible')
-        //                 .and('have.attr', 'type', 'email');
-        //             signUp.getPassword()
-        //                 .should('be.visible')
-        //                 .and('have.attr', 'type', 'password');
-        //             signUp.getBtnContinue()
-        //                 .should('be.visible')
-        //                 .and("have.text", "Continue");
-        //             signUp.getPolicyLink()
-        //                 .should('be.visible')
-        //                 .and('have.text', 'Privacy Policy');
-        //             signUp.clickCloseSignUpFormBtn();
-        //         });
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickStartTradingBtnOnMainBanner();
+            signUp.getFormSignUp()
+                .should("be.visible");
+            signUp.getHeaderNameSignUp()
+                .should('have.text', 'Sign up');
+            signUp.getLoginLinkForm()
+                .should('be.visible')
+                .and('have.text', 'Login');
+            signUp.getEmail()
+                .should('be.visible')
+                .and('have.attr', 'type', 'email');
+            signUp.getPassword()
+                .should('be.visible')
+                .and('have.attr', 'type', 'password');
+            signUp.getBtnContinue()
+                .should('be.visible')
+                .and("have.text", "Continue");
+            signUp.getPolicyLink()
+                .should('be.visible')
+                .and('have.text', 'Privacy Policy');
+            signUp.clickCloseSignUpFormBtn();
+        });
 
-        //         it(`TC_11.03.04_04_UnReg | Education > Menu Item [Position Trading] > Test button [Try Demo] in Main banner of ${language.langName} language`, () => {
-        //             header.getCountryAndLang().click({ force: true });
-        //             cy.get(language.langUrl).click({ force: true });
-        //             cy.get('span.js-langName').should('include.text', `${language.langName}`);
+        it(`TC_11.03.04_03_UnAuth | Education > Menu Item [Position Trading] > Test button [Start Trading] in Main banner of ${language.langName} language`, () => {
+            cy.fixture('testData').then((testData) => {
+                login.clickBtnLogIn();
+                login.enterEmail(testData.email);
+                login.enterPassword(testData.password);
+                login.clickLogMeAfter();
+                login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
+                cy.wait(10000);
+                cy.get('#wg_userarea').click();
+                cy.get('.logout-user').click();
+            });
 
-        //             header.getEducationMenu().realHover();
-        //             basePage.clickPositionTrading();
-        //             bannerBtn.clickTryDemoBtnOnMainBanner();
-        //             signUp.getFormSignUp()
-        //                 .should("be.visible");
-        //             signUp.getHeaderNameSignUp()
-        //                 .should('have.text', 'Sign up');
-        //             signUp.getLoginLinkForm()
-        //                 .should('be.visible')
-        //                 .and('have.text', 'Login');
-        //             signUp.getEmail()
-        //                 .should('be.visible')
-        //                 .and('have.attr', 'type', 'email');
-        //             signUp.getPassword()
-        //                 .should('be.visible')
-        //                 .and('have.attr', 'type', 'password');
-        //             signUp.getBtnContinue()
-        //                 .should('be.visible')
-        //                 .and("have.text", "Continue");
-        //             signUp.getPolicyLink()
-        //                 .should('be.visible')
-        //                 .and('have.text', 'Privacy Policy');
-        //             signUp.clickCloseSignUpFormBtn();
-        //         });
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickStartTradingBtnOnMainBanner();
+            login.getFormLogIn()
+                .should("be.visible");
+            login.getHeaderNameLogIn()
+                .should("contain", "Login");
+            login.getSignUpLinkForm()
+                .should("be.visible")
+                .and("include.text", "Sign up");
+            login.getEmail()
+                .should("be.visible")
+                .and("have.attr", "type", "email")
+            login.getPassword()
+                .should('be.visible')
+                .and("have.attr", "type", "password")
+            login.getBtnContinue()
+                .should("have.text", "Continue");
+            login.getForgotPasswordLink()
+                .should("be.visible")
+                .and("have.text", "Forgot password?");
+            login.getLogMeAfter()
+                .should("be.visible");
+            login.clickCloseLoginFormBtn();
+        });
+
+        it(`TC_11.03.04_03_Auth | Education > Menu Item [Position Trading] > Test button [Start Trading] in Main banner of ${language.langName} language`, () => {
+            cy.fixture('testData').then((testData) => {
+                login.clickBtnLogIn();
+                login.enterEmail(testData.email);
+                login.enterPassword(testData.password);
+                login.clickLogMeAfter();
+                login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
+                cy.wait(10000);
+            });
+
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickStartTradingBtnOnMainBanner();
+            cy.url().should("eq", links.exploreWebPlatformLink);
+        });
+
+
+        it(`TC_11.03.04_04_UnReg | Education > Menu Item [Position Trading] > Test button [Try Demo] in Main banner of ${language.langName} language`, () => {
+           
+            header.getCountryAndLang().click();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickTryDemoBtnOnMainBanner();
+            signUp.getFormSignUp()
+                .should("be.visible");
+            signUp.getHeaderNameSignUp()
+                .should('have.text', 'Sign up');
+            signUp.getLoginLinkForm()
+                .should('be.visible')
+                .and('have.text', 'Login');
+            signUp.getEmail()
+                .should('be.visible')
+                .and('have.attr', 'type', 'email');
+            signUp.getPassword()
+                .should('be.visible')
+                .and('have.attr', 'type', 'password');
+            signUp.getBtnContinue()
+                .should('be.visible')
+                .and("have.text", "Continue");
+            signUp.getPolicyLink()
+                .should('be.visible')
+                .and('have.text', 'Privacy Policy');
+            signUp.clickCloseSignUpFormBtn();
+        });
+
+        it(`TC_11.03.04_04_UnAuth | Education > Menu Item [Position Trading] > Test button [Try Demo] in Main banner of ${language.langName} language`, () => {
+            cy.fixture('testData').then((testData) => {
+                login.clickBtnLogIn();
+                login.enterEmail(testData.email);
+                login.enterPassword(testData.password);
+                login.clickLogMeAfter();
+                login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
+                cy.wait(10000);
+                cy.get('#wg_userarea').click();
+                cy.get('.logout-user').click();
+            });
+
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickTryDemoBtnOnMainBanner();
+            login.getFormLogIn()
+                .should("be.visible");
+            login.getHeaderNameLogIn()
+                .should("contain", "Login");
+            login.getSignUpLinkForm()
+                .should("be.visible")
+                .and("include.text", "Sign up");
+            login.getEmail()
+                .should("be.visible")
+                .and("have.attr", "type", "email")
+            login.getPassword()
+                .should('be.visible')
+                .and("have.attr", "type", "password")
+            login.getBtnContinue()
+                .should("have.text", "Continue");
+            login.getForgotPasswordLink()
+                .should("be.visible")
+                .and("have.text", "Forgot password?");
+            login.getLogMeAfter()
+                .should("be.visible");
+            login.clickCloseLoginFormBtn();
+        });
+
+        it(`TC_11.03.04_04_Auth | Education > Menu Item [Position Trading] > Test button [Try Demo] in Main banner of ${language.langName} language`, () => {
+            cy.fixture('testData').then((testData) => {
+                login.clickBtnLogIn();
+                login.enterEmail(testData.email);
+                login.enterPassword(testData.password);
+                login.clickLogMeAfter();
+                login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
+                cy.wait(10000);
+            });
+
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickTryDemoBtnOnMainBanner();
+            cy.url().should("eq", links.exploreWebPlatformLink);
+        });
 
         //         it(`TC_11.03.04_05_UnReg | Educations > Menu item [Position trading] > Test buttons [Trade] on Widget "Most traded" of ${language.langName} language`, () => {
         //             header.getCountryAndLang().click({ force: true });
