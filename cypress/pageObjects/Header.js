@@ -1,7 +1,6 @@
 class Header {
     // Main logo Capital
     getMainLogo = () => cy.get('[class="cc-logo hideXs"]');
-
     getCountyIcons = () => cy.get(".user-header .user-lang-selection li");
     getCountryAndLang = () => cy.get("div .licLangSw__btn");
     getDropdownCountry = () => cy.get("input[type=text][class$=hidden]");
