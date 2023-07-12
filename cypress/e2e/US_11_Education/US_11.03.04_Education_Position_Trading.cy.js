@@ -15,7 +15,7 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
 
     const languages = [
         { langName: "English", langUrl: "a.js-analyticsClick[data-type='nav_lang_en']" },
-        { langName: "Deutsch", langUrl: "a.js-analyticsClick[data-type='nav_lang_de']" }
+        { langName: "العَرَبِيَّة", langUrl: "a.js-analyticsClick[data-type='nav_lang_ar']" }
     ]
 
     beforeEach(() => {
@@ -23,7 +23,7 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
         basePage.open(); // open capital.com
         cy.clearCookies();
         cy.get('#onetrust-accept-btn-handler').click();
-        header.selectGermanyCountry();
+        header.selectArabicCountry();
 
     });
 
@@ -497,7 +497,7 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
                 .and('contain', 'Capital.com: Trading & Finance');
             cy.get('.product-header__identity > .link')
                 .should('be.visible');
-            cy.visit('https://capital.com/position-trading');
+            cy.go("back");
         });
 
         it(`TC_11.03.04_06_UnAuth | Education > Menu Item [Position Trading] > Test button [Download on the App Store] in the block "Sign up and trade smart today"  of ${language.langName} language`, () => {
@@ -527,7 +527,7 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
                 .and('contain', 'Capital.com: Trading & Finance');
             cy.get('.product-header__identity > .link')
                 .should('be.visible');
-            cy.visit('https://capital.com/position-trading');
+            cy.go("back");
         });
 
         it(`TC_11.03.04_06_Auth | Education > Menu Item [Position Trading] > Test button [Download on the App Store] in the block "Sign up and trade smart today"  of ${language.langName} language`, () => {
@@ -556,92 +556,268 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
                 .and('contain', 'Capital.com: Trading & Finance');
             cy.get('.product-header__identity > .link')
                 .should('be.visible');
-            cy.visit('https://capital.com/position-trading');
+            cy.go("back");
         });
 
-        //         it(`TC_11.03.04_07_UnReg | Education > Menu Item [Position Trading] > Test button [Get it on Google Play] in the block "Sign up and trade smart today" of ${language.langName} language`, () => {
-        //             header.hoverCountryAndLang();
-        //             cy.get(language.langUrl).click({ force: true });
-        //             cy.get('span.js-langName').should('include.text', `${language.langName}`);
+        it(`TC_11.03.04_07_UnReg | Education > Menu Item [Position Trading] > Test button [Get it on Google Play] in the block "Sign up and trade smart today" of ${language.langName} language`, () => {
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickDownloadOnGooglePlayLink();
+            cy.url().should('eq', links.downloadGooglePlayLink);
+            cy.get('a.f0UV3d')
+                .should('be.visible');
+            cy.get('h1.Fd93Bb.F5UCq.p5VxAd')
+                .should('be.visible')
+                .and("have.text", 'Online Broker - Capital.com');
+            cy.get('div.Vbfug.auoIOc')
+                .should('be.visible');
+            cy.go("back");
+        });
+        it(`TC_11.03.04_07_UnAuth | Education > Menu Item [Position Trading] > Test button [Get it on Google Play] in the block "Sign up and trade smart today" of ${language.langName} language`, () => {
+            cy.fixture('testData').then((testData) => {
+                login.clickBtnLogIn();
+                login.enterEmail(testData.email);
+                login.enterPassword(testData.password);
+                login.clickLogMeAfter();
+                login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
+                cy.wait(10000);
+                cy.get('#wg_userarea').click();
+                cy.get('.logout-user').click();
+            });
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickDownloadOnGooglePlayLink();
+            cy.url().should('eq', links.downloadGooglePlayLink);
+            cy.get('a.f0UV3d')
+                .should('be.visible');
+            cy.get('h1.Fd93Bb.F5UCq.p5VxAd')
+                .should('be.visible')
+                .and("have.text", 'Online Broker - Capital.com');
+            cy.get('div.Vbfug.auoIOc')
+                .should('be.visible');
+            cy.go("back");
+        });
 
-        //             header.getEducationMenu().realHover();
-        //             basePage.clickPositionTrading();
-        //             bannerBtn.clickDownloadOnGooglePlayLink();
-        //             cy.url().should('eq', links.downloadGooglePlayLink);
-        //             cy.get('a.f0UV3d')
-        //                 .should('be.visible');
-        //             cy.get('h1.Fd93Bb.F5UCq.p5VxAd')
-        //                 .should('be.visible')
-        //                 .and("have.text", 'Online Broker - Capital.com');
-        //             cy.get('div.Vbfug.auoIOc')
-        //                 .should('be.visible');
-        //             cy.visit('https://capital.com/position-trading');
-        //         });
+        it(`TC_11.03.04_07_Auth | Education > Menu Item [Position Trading] > Test button [Get it on Google Play] in the block "Sign up and trade smart today" of ${language.langName} language`, () => {
+            cy.fixture('testData').then((testData) => {
+                login.clickBtnLogIn();
+                login.enterEmail(testData.email);
+                login.enterPassword(testData.password);
+                login.clickLogMeAfter();
+                login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
+                cy.wait(10000);
+            });
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickDownloadOnGooglePlayLink();
+            cy.url().should('eq', links.downloadGooglePlayLink);
+            cy.get('a.f0UV3d')
+                .should('be.visible');
+            cy.get('h1.Fd93Bb.F5UCq.p5VxAd')
+                .should('be.visible')
+                .and("have.text", 'Online Broker - Capital.com');
+            cy.get('div.Vbfug.auoIOc')
+                .should('be.visible');
+            cy.go("back");
+        });
 
-        //         it(`TC_11.03.04_08_UnReg | Education > Menu Item [Position Trading] > Test button [Explore Web Platform] in the block "Sign up and trade smart today" of ${language.langName} language`, () => {
-        //             header.hoverCountryAndLang();
-        //             cy.get(language.langUrl).click({ force: true });
-        //             cy.get('span.js-langName').should('include.text', `${language.langName}`);
+        it(`TC_11.03.04_08_UnReg | Education > Menu Item [Position Trading] > Test button [Explore Web Platform] in the block "Sign up and trade smart today" of ${language.langName} language`, () => {
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click({ force: true });
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
 
-        //             header.getEducationMenu().realHover();
-        //             basePage.clickPositionTrading();
-        //             bannerBtn.clickExploreWebPlatformLink();
-        //             cy.url().should('eq', links.exploreWebPlatformLink);
-        //             signUp.getFormSignUpOnPaltform()
-        //                 .should("be.visible")
-        //             signUp.getHeaderNameSignUpOnPlatform()
-        //                 .should('have.text', 'Sign up');
-        //             signUp.getEmailOnPlatform()
-        //                 .should('be.visible')
-        //                 .and('have.attr', 'type', 'email');
-        //             signUp.getPasswordOnPlatform()
-        //                 .should('be.visible')
-        //                 .and('have.attr', 'type', 'password');
-        //             signUp.getCheckBoxBySigningUp()
-        //                 .should('be.visible');
-        //             signUp.getPolicyLinkOnPlatform()
-        //                 .should('be.visible')
-        //                 .and('have.text', 'Privacy policy');
-        //             signUp.getBtnContinueOnPlatform()
-        //                 .should('be.visible')
-        //                 .and("have.text", ' Continue ');
-        //             signUp.getLoginLinkFormOnPlatform()
-        //                 .should('be.visible')
-        //                 .and('have.text', 'Login');
-        //             cy.visit('https://capital.com/position-trading')
-        //         });
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickExploreWebPlatformLink();
+            cy.url().should('eq', links.exploreWebPlatformLink);
+            signUp.getFormSignUpOnPaltform()
+                .should("be.visible")
+            signUp.getHeaderNameSignUpOnPlatform()
+                .should('have.text', 'Sign up');
+            signUp.getEmailOnPlatform()
+                .should('be.visible')
+                .and('have.attr', 'type', 'email');
+            signUp.getPasswordOnPlatform()
+                .should('be.visible')
+                .and('have.attr', 'type', 'password');
+            signUp.getCheckBoxBySigningUp()
+                .should('be.visible');
+            signUp.getPolicyLinkOnPlatform()
+                .should('be.visible')
+                .and('have.text', 'Privacy policy');
+            signUp.getBtnContinueOnPlatform()
+                .should('be.visible')
+                .and("have.text", ' Continue ');
+            signUp.getLoginLinkFormOnPlatform()
+                .should('be.visible')
+                .and('have.text', 'Login');
+            cy.go("back");
+        });
 
-        //         it(`TC_11.03.05_09_UnReg | Education > Menu Item [Position Trading] > Test button [Create & verify your account] in the block "Still looking for a broker you can trust?" of ${language.langName} language`, () => {
-        //             header.hoverCountryAndLang();
-        //             cy.get(language.langUrl).click({ force: true });
-        //             cy.get('span.js-langName').should('include.text', `${language.langName}`);
+        it(`TC_11.03.04_08_UnAuth | Education > Menu Item [Position Trading] > Test button [Explore Web Platform] in the block "Sign up and trade smart today" of ${language.langName} language`, () => {
+            cy.fixture('testData').then((testData) => {
+                login.clickBtnLogIn();
+                login.enterEmail(testData.email);
+                login.enterPassword(testData.password);
+                login.clickLogMeAfter();
+                login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
+                cy.wait(10000);
+                cy.get('#wg_userarea').click();
+                cy.get('.logout-user').click();
+            });
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickExploreWebPlatformLink();
+            cy.url().should('eq', links.exploreWebPlatformLink);
+            login.getFormLoginOnPlatform().should('be.visible')
+            login.getHeaderNameLoginOnPlatform().should('have.text', 'Login')
+            login.getEmailOnPlatform().should('be.visible')
+                .and('have.attr', 'type', 'email')
+            login.getPasswordOnPlatform()
+                .should('be.visible')
+                .and('have.attr', 'type', 'password');
+            login.getBtnContinueOnPlatform()
+                .should('be.visible')
+                .and("have.text", ' Continue ');
+            login.getLoginLinkFormOnPlatform()
+                .should('be.visible')
+                .and('have.text', 'Login');
+            cy.go("back");
+        });
 
-        //             header.getEducationMenu().realHover();
-        //             basePage.clickPositionTrading();
-        //             bannerBtn.clickCreateAndVerifyBtn();
-        //             signUp.getFormSignUp()
-        //                 .should("be.visible");
-        //             signUp.getHeaderNameSignUp()
-        //                 .should("have.text", "Sign up");
-        //             signUp.getLoginLinkForm()
-        //                 .should("be.visible")
-        //                 .and("have.text", "Login");
-        //             signUp.getEmail()
-        //                 .should("be.visible")
-        //                 .and("have.attr", "type", "email");
-        //             signUp.getPassword()
-        //                 .should("be.visible")
-        //                 .and("have.attr", "type", "password");
-        //             signUp.getBtnContinue()
-        //                 .should("be.visible")
-        //                 .and("have.text", "Continue");
-        //             signUp.getPolicyLink()
-        //                 .should("be.visible")
-        //                 .and("have.text", "Privacy Policy");
-        //             signUp.clickCloseSignUpFormBtn();
-        //             header.clickMainLogo();
-        //         });
-        //     });
-        // })
+        it(`TC_11.03.04_08_Auth | Education > Menu Item [Position Trading] > Test button [Explore Web Platform] in the block "Sign up and trade smart today" of ${language.langName} language`, () => {
+            cy.fixture('testData').then((testData) => {
+                login.clickBtnLogIn();
+                login.enterEmail(testData.email);
+                login.enterPassword(testData.password);
+                login.clickLogMeAfter();
+                login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
+                cy.wait(10000);
+            });
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickExploreWebPlatformLink();
+            cy.url().should("eq", links.exploreWebPlatformLink);
+        });
+
+
+        it(`TC_11.03.05_09_UnReg | Education > Menu Item [Position Trading] > Test button [Create & verify your account] in the block "Still looking for a broker you can trust?" of ${language.langName} language`, () => {
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickCreateAndVerifyBtn();
+            signUp.getFormSignUp()
+                .should("be.visible");
+            signUp.getHeaderNameSignUp()
+                .should("have.text", "Sign up");
+            signUp.getLoginLinkForm()
+                .should("be.visible")
+                .and("have.text", "Login");
+            signUp.getEmail()
+                .should("be.visible")
+                .and("have.attr", "type", "email");
+            signUp.getPassword()
+                .should("be.visible")
+                .and("have.attr", "type", "password");
+            signUp.getBtnContinue()
+                .should("be.visible")
+                .and("have.text", "Continue");
+            signUp.getPolicyLink()
+                .should("be.visible")
+                .and("have.text", "Privacy Policy");
+            signUp.clickCloseSignUpFormBtn();
+            header.clickMainLogo();
+        });
+
+        it(`TC_11.03.05_09_UnAuth | Education > Menu Item [Position Trading] > Test button [Create & verify your account] in the block "Still looking for a broker you can trust?" of ${language.langName} language`, () => {
+            cy.fixture('testData').then((testData) => {
+                login.clickBtnLogIn();
+                login.enterEmail(testData.email);
+                login.enterPassword(testData.password);
+                login.clickLogMeAfter();
+                login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
+                cy.wait(10000);
+                cy.get('#wg_userarea').click();
+                cy.get('.logout-user').click();
+            });
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickCreateAndVerifyBtn();
+            signUp.getFormSignUp()
+                .should("be.visible");
+            signUp.getHeaderNameSignUp()
+                .should("have.text", "Sign up");
+            signUp.getLoginLinkForm()
+                .should("be.visible")
+                .and("have.text", "Login");
+            signUp.getEmail()
+                .should("be.visible")
+                .and("have.attr", "type", "email");
+            signUp.getPassword()
+                .should("be.visible")
+                .and("have.attr", "type", "password");
+            signUp.getBtnContinue()
+                .should("be.visible")
+                .and("have.text", "Continue");
+            signUp.getPolicyLink()
+                .should("be.visible")
+                .and("have.text", "Privacy Policy");
+            signUp.clickCloseSignUpFormBtn();
+            header.clickMainLogo();
+        });
+
+        it(`TC_11.03.05_09_Auth | Education > Menu Item [Position Trading] > Test button [Create & verify your account] in the block "Still looking for a broker you can trust?" of ${language.langName} language`, () => {
+            cy.fixture('testData').then((testData) => {
+                login.clickBtnLogIn();
+                login.enterEmail(testData.email);
+                login.enterPassword(testData.password);
+                login.clickLogMeAfter();
+                login.clickBtnContinue();
+                cy.wait(12000);
+                cy.go("back");
+                cy.wait(10000);
+            });
+            header.hoverCountryAndLang();
+            cy.get(language.langUrl).click();
+            cy.get('span.js-langName').should('include.text', `${language.langName}`);
+            header.getEducationMenu().realHover();
+            basePage.clickPositionTrading();
+            bannerBtn.clickCreateAndVerifyBtn();
+            cy.url().should("eq", links.exploreWebPlatformLink);
+            cy.go("back");
+        });
     });
 })
+
+
