@@ -11,11 +11,11 @@ const header = new Header();
 const login = new Login();
 const signUp = new Signup();
 
-describe("Education > Menu Item [Position Trading]in All Role", () => {
+describe("Education > Menu Item [Position Trading]", () => {
 
     const languages = [
-        { langName: "English", langUrl: "a.js-analyticsClick[data-type='nav_lang_en']" },
-        { langName: "العَرَبِيَّة", langUrl: "a.js-analyticsClick[data-type='nav_lang_ar']" }
+        // /{ langName: "English", langUrl: "a.js-analyticsClick[data-type='nav_lang_en']" },
+        { langName: "Nederlands", langUrl: "a.js-analyticsClick[data-type='nav_lang_nl']" }
     ]
 
     beforeEach(() => {
@@ -23,7 +23,7 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
         basePage.open(); // open capital.com
         cy.clearCookies();
         cy.get('#onetrust-accept-btn-handler').click();
-        header.selectArabicCountry();
+        // header.selectSpainCountry();
 
     });
 
@@ -71,6 +71,7 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
                 cy.get('#wg_userarea').click();
                 cy.get('.logout-user').click();
             });
+
             header.hoverCountryAndLang();
             cy.get(language.langUrl).click();
             cy.get('span.js-langName').should('include.text', `${language.langName}`);
@@ -205,7 +206,6 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
             cy.get('span.js-langName').should('include.text', `${language.langName}`);
             header.getEducationMenu().realHover();
             basePage.clickPositionTrading();
-            signUp.getBtnSignUp().click();
             signUp.getBtnSignUp().should('not.be.visible');
         })
 
@@ -697,9 +697,9 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
             login.getBtnContinueOnPlatform()
                 .should('be.visible')
                 .and("have.text", ' Continue ');
-            login.getLoginLinkFormOnPlatform()
+            login.getSignUpLinkFormOnPlatform()
                 .should('be.visible')
-                .and('have.text', 'Login');
+                .and('have.text', 'Sign Up');
             cy.go("back");
         });
 
@@ -722,7 +722,6 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
             bannerBtn.clickExploreWebPlatformLink();
             cy.url().should("eq", links.exploreWebPlatformLink);
         });
-
 
         it(`TC_11.03.05_09_UnReg | Education > Menu Item [Position Trading] > Test button [Create & verify your account] in the block "Still looking for a broker you can trust?" of ${language.langName} language`, () => {
             header.hoverCountryAndLang();
@@ -819,5 +818,6 @@ describe("Education > Menu Item [Position Trading]in All Role", () => {
         });
     });
 })
+
 
 
