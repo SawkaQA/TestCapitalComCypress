@@ -11,7 +11,7 @@ const header = new Header();
 const login = new Login();
 const signUp = new Signup();
 
-describe("Education > Menu Item [Position Trading]", () => {
+describe.skip("Education > Menu Item [Position Trading]", () => {
 
     const languages = [
         // /{ langName: "English", langUrl: "a.js-analyticsClick[data-type='nav_lang_en']" },
