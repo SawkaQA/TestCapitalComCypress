@@ -16,6 +16,7 @@ module.exports = defineConfig({
 
     e2e: {
         baseUrl: "https://capital.com/",
+       // baseUrlFca: "https://capital.com/en-gb",
         setupNodeEvents(on, config) {
             allureWriter(on, config);
             return config;
