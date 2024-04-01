@@ -4,6 +4,8 @@ import BasePageFCA from "../../pageObjects/BasePageFCA";
 import HeaderFCA from "../../pageObjects/HeaderFCA";
 import MarkertTradingBlockSignUpButtonFCA from "../../pageObjects/MarkertsButtonsFCA";
 import SignUpFormFCA from "../../pageObjects/SignupLogin/SignUpFCA";
+import LoginFCA from "../../pageObjects/SignupLogin/LoginFCA";
+import testData from "../../fixtures/testData.json";
 
 
 describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', () => {
@@ -12,6 +14,7 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
   const header = new HeaderFCA;
   const tradingSignUpButton = new MarkertTradingBlockSignUpButtonFCA;
   const signUp = new SignUpFormFCA;
+  const login = new LoginFCA
 
   context('Unregistered user', () => {
     beforeEach(() => {
@@ -51,9 +54,21 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
 
   context('Registered user', () => {
     beforeEach(() => {
-      // Выполните вход в систему для зарегистрированного пользователя перед каждым тестом (it)
+      basePage.openFcaUrl();
+      basePage.openBannerCookies();
+      basePage.clickAcceptCookies();
+      login.clickBtnLogin();
+      login.typeEmail(testData.email);
+      login.typePassword(testData.password);
+      login.clickBtnContinue();
+      login.visitTraidingPlatform();
+      login.verifyLogin();
+      header.hoverMarketsNenu();
+      header.openSharesMarketsNenu();
     });
-    xit('JS/AT_01.02!00_101 | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
+
+    it('JS/AT_01.02!00_101 | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
+
 
     });
 
