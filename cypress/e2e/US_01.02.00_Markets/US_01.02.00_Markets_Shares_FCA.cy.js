@@ -25,7 +25,6 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
       header.openSharesMarketsNenu();
     });
 
-
     it('JS/AT_01.02!00_101 | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
       tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
       signUp.openFormSignUp();
@@ -62,14 +61,16 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
       login.typePassword(testData.password);
       login.clickBtnContinue();
       login.visitTraidingPlatform();
-      login.verifyLogin();
+      login.verifyAccountLogin();
       header.hoverMarketsNenu();
       header.openSharesMarketsNenu();
     });
 
     it('JS/AT_01.02!00_101 | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
 
-
+      tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
+      cy.url().should('contain', '/trading/platform');
+      cy.title().should('eq', 'Trading Platform | Capital.com');
     });
 
   });

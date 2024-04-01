@@ -36,7 +36,7 @@ class LoginFCA {
     
   }
 
-  verifyLogin(){
+  verifyAccountLogin(){
     cy.url().should('contain', '/en-gb');
     this.getBtnMyAccount().should('have.attr', 'href', '/trading/platform')
 
