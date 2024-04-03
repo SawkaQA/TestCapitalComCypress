@@ -76,7 +76,7 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
       login.typeEmail(testData.email);
       login.typePassword(testData.password);
       login.clickBtnContinue();
-      traidingPlatform.veryfyVisitTraidingPlatform();
+      tradingPlatform.veryfyVisitTraidingPlatform();
       cy.go("back");
       login.verifyAccountLogin();
       header.hoverMarketsNenu();
@@ -85,7 +85,7 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
 
     it('JS/AT_01.02!00_101 | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
       tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
-      traidingPlatform.veryfyVisitTraidingPlatform();
+      tradingPlatform.veryfyVisitTraidingPlatform();
       cy.title().should('eq', tradingPlatformData.tradingPlatformTitle);
     });
 
