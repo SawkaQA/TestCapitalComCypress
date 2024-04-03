@@ -13,7 +13,7 @@ class BasePageFCA {
     this.getBannerCookies().should('be.visible');
   }
 
-  clickAcceptCookies() {
+  clickBtnAcceptCookies() {
     this.getBtnAcceptCookies().click();
   }
 

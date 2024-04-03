@@ -3,9 +3,11 @@
 import BasePageFCA from "../../pageObjects/BasePageFCA";
 import HeaderFCA from "../../pageObjects/HeaderFCA";
 import MarkertTradingBlockSignUpButtonFCA from "../../pageObjects/MarkertsButtonsFCA";
-import SignUpFormFCA from "../../pageObjects/SignupLogin/SignUpFCA";
-import LoginFCA from "../../pageObjects/SignupLogin/LoginFCA";
+import SignUpFCA from "../../pageObjects/SignupLogin/SignUpFCA";
+import LoginFCA from "../../pageObjects/SignupLogin/LoginFCA ";
 import testData from "../../fixtures/testData.json";
+import tradingPlatformData from "../../fixtures/tradingPlatformData.json";
+import TradingPlatformPage from "../../pageObjects/TradingPlatformPage";
 
 
 describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', () => {
@@ -13,14 +15,15 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
   const basePage = new BasePageFCA;
   const header = new HeaderFCA;
   const tradingSignUpButton = new MarkertTradingBlockSignUpButtonFCA;
-  const signUp = new SignUpFormFCA;
-  const login = new LoginFCA
+  const signUp = new SignUpFCA;
+  const login = new LoginFCA;
+  const tradingPlatform = new TradingPlatformPage;
 
   context('Unregistered user', () => {
     beforeEach(() => {
       basePage.openFcaUrl();
       basePage.openBannerCookies();
-      basePage.clickAcceptCookies();
+      basePage.clickBtnAcceptCookies();
       header.hoverMarketsNenu();
       header.openSharesMarketsNenu();
     });
@@ -43,9 +46,22 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
 
   context('Unauthorized user', () => {
     beforeEach(() => {
-      // Выполните вход в систему для неавторизованного пользователя перед каждым тестом (it)
+      basePage.openFcaUrl();
+      basePage.openBannerCookies();
+      basePage.clickBtnAcceptCookies();
+      login.clickHeaderBtnLogin();
+      login.typeEmail(testData.email);
+      login.typePassword(testData.password);
+      login.clickBtnContinue();
+      tradingPlatform.veryfyVisitTraidingPlatform();
+      tradingPlatform.clicktBtnAccountInfo();
+      tradingPlatform.clickAccountLogout();
+      basePage.openFcaUrl();
+      header.hoverMarketsNenu();
+      header.openSharesMarketsNenu();
     });
-    xit('JS/AT_01.02!00_101 | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
+
+    it('JS/AT_01.02!00_101 | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
 
     });
 
@@ -55,22 +71,22 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
     beforeEach(() => {
       basePage.openFcaUrl();
       basePage.openBannerCookies();
-      basePage.clickAcceptCookies();
-      login.clickBtnLogin();
+      basePage.clickBtnAcceptCookies();
+      login.clickHeaderBtnLogin();
       login.typeEmail(testData.email);
       login.typePassword(testData.password);
       login.clickBtnContinue();
-      login.visitTraidingPlatform();
+      traidingPlatform.veryfyVisitTraidingPlatform();
+      cy.go("back");
       login.verifyAccountLogin();
       header.hoverMarketsNenu();
       header.openSharesMarketsNenu();
     });
 
     it('JS/AT_01.02!00_101 | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
-
       tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
-      cy.url().should('contain', '/trading/platform');
-      cy.title().should('eq', 'Trading Platform | Capital.com');
+      traidingPlatform.veryfyVisitTraidingPlatform();
+      cy.title().should('eq', tradingPlatformData.tradingPlatformTitle);
     });
 
   });

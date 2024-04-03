@@ -13,5 +13,10 @@
         "/trading-products",
         "/financial-news-articles",
         "/about-us"
-    ]
+    ],
+
+    "endPointsMenuMarketsFCA": {
+      "marketsShares": "/markets/shares"
+    }    
+
 }

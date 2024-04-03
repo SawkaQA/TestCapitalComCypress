@@ -1,19 +1,21 @@
+import headerData from '../fixtures/headerData.json'
+
+
 class HeaderFCA {
 
   // MenuButtons
   getMarketsNenu = () => cy.get('#header  a[href="/en-gb/markets"]');
   getSharesMarketsNenu = () => cy.get('#header a[href="/en-gb/markets/shares"]');
 
-  //Methods
 
+  //Methods
   hoverMarketsNenu() {
-    this.getMarketsNenu().realHover();    
+    this.getMarketsNenu().realHover();
   }
 
-  openSharesMarketsNenu() { 
-    this.getSharesMarketsNenu().click({force: true}).wait(15000);
-    cy.url().should('contain', '/markets/shares');
-    
+  openSharesMarketsNenu() {
+    this.getSharesMarketsNenu().click({ force: true }).wait(15000);
+    cy.url().should('contain', headerData.endPointsMenuMarketsFCA.marketsShares);
   }
 
 }

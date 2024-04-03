@@ -1,4 +1,4 @@
-class SignUpFormFCA {
+class SignUpFCA {
   getFormSignUp = ()=> cy.get('[class*="modal_modal"]') 
   getHeadlingForm = () => cy.get('div [class*="modal"] [class*="heading_h3"]') 
   getLoginLinkForm = () => cy.get('div [class*="modal"] [class*="button_link"]')
@@ -11,4 +11,4 @@ class SignUpFormFCA {
     this.getCloseButtonForm().click()
   }
 }
-export default SignUpFormFCA 
+export default SignUpFCA 
