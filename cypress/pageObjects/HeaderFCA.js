@@ -14,7 +14,7 @@ class HeaderFCA {
   }
 
   openSharesMarketsNenu() {
-    this.getSharesMarketsNenu().click({ force: true }).wait(15000);
+    this.getSharesMarketsNenu().click({ force: true }).wait(25000);
     cy.url().should('contain', headerData.endPointsMenuMarketsFCA.marketsShares);
   }
 
