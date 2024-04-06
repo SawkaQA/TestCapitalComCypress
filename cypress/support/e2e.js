@@ -17,6 +17,7 @@
 import "./commands";
 import "cypress-real-events";
 import "@shelex/cypress-allure-plugin";
+import "allure-cypress/commands";
 
 Cypress.on("uncaught:exception", () => false);
 
