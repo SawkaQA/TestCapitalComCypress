@@ -33,7 +33,7 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
       tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
       signUp.openFormSignUp();
 
-      signUp.getHeadlingForm()
+      signUp.getHeadingForm()
         .should("be.visible")
         .and('have.text', 'Sign up');
       signUp.getLoginLinkForm()
@@ -47,7 +47,7 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
       tradingTryDemoButton.clickMarkertTradingBlockTryDemoButton();
       signUp.openFormSignUp();
   
-      signUp.getHeadlingForm()
+      signUp.getHeadingForm()
         .should("be.visible")
         .and('have.text', 'Sign up');
       signUp.getLoginLinkForm()
@@ -81,7 +81,7 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
       tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
       signUp.openFormSignUp();
 
-      signUp.getHeadlingForm()
+      signUp.getHeadingForm()
         .should("be.visible")
         .and('have.text', 'Sign up');
       signUp.getLoginLinkForm()
