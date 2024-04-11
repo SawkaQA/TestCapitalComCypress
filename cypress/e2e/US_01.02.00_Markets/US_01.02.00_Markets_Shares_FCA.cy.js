@@ -8,6 +8,7 @@ import LoginFCA from "../../pageObjects/SignupLogin/LoginFCA ";
 import testData from "../../fixtures/testData.json";
 import tradingPlatformData from "../../fixtures/tradingPlatformData.json";
 import TradingPlatformPage from "../../pageObjects/TradingPlatformPage";
+import { checkOutSignUpForm } from '../../support/helpers';
 
 
 describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', () => {
@@ -31,30 +32,23 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
 
     it('JS/AT_01.02!00_101_UnReg | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
       tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
-      signUp.openFormSignUp();
+      /*       signUp.openFormSignUp();      
+            signUp.getHeadingForm()
+              .should("be.visible")
+              .and('have.text', 'Sign up');
+            signUp.getLoginLinkForm()
+              .should("be.visible")
+              .and('have.text', 'Login');      
+            signUp.closeFormSignUp(); */
+            signUp.openFormSignUp();
+            checkOutSignUpForm(signUp);
 
-      signUp.getHeadingForm()
-        .should("be.visible")
-        .and('have.text', 'Sign up');
-      signUp.getLoginLinkForm()
-        .should("be.visible")
-        .and('have.text', 'Login');
-
-      signUp.closeFormSignUp();
     });
 
     it('JS/TC_01.02.00_102_UnReg | Markets > Menu item [Shares] > Click button [Try Demo ]  in the block "Shares trading"', () => {
       tradingTryDemoButton.clickMarkertTradingBlockTryDemoButton();
       signUp.openFormSignUp();
-  
-      signUp.getHeadingForm()
-        .should("be.visible")
-        .and('have.text', 'Sign up');
-      signUp.getLoginLinkForm()
-        .should("be.visible")
-        .and('have.text', 'Login');
-  
-      signUp.closeFormSignUp();
+      checkOutSignUpForm(signUp)
     });
 
   });
@@ -80,15 +74,7 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
     it('JS/AT_01.02!00_101_UnAuth | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
       tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
       signUp.openFormSignUp();
-
-      signUp.getHeadingForm()
-        .should("be.visible")
-        .and('have.text', 'Sign up');
-      signUp.getLoginLinkForm()
-        .should("be.visible")
-        .and('have.text', 'Login');
-
-      signUp.closeFormSignUp();
+      checkOutSignUpForm(signUp);
     });
 
     it('JS/TC_01.02.00_102_UnAuth | Markets > Menu item [Shares] > Click button [Try Demo ]  in the block "Shares trading"', () => {
@@ -96,7 +82,7 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
     });
 
   });
-  
+
 
   context('Authorized  user', () => {
     beforeEach(() => {
@@ -125,9 +111,9 @@ describe('JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license', ()
 
     });
 
-    
+
   });
 
-  
+
 
 })
