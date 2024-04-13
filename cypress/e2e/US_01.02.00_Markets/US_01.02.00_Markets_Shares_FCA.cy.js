@@ -109,3 +109,4 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
     });
   });
 });
+
