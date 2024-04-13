@@ -20,8 +20,8 @@ module.exports = defineConfig({
        // baseUrlFca: "https://capital.com/en-gb",
         setupNodeEvents(on, config) {
             allureCypress(on);
-            allureWriter(on, config);
-            return config;
+            /* allureWriter(on, config);
+            return config; */
         },
     },
 });
