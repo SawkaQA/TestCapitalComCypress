@@ -1,4 +1,5 @@
 {
   "tradingPlatformBaseUrl": "/trading/platform",
+  "tradingPlatformDemoModeUrl": "/trading/platform/demo",
   "tradingPlatformTitle": "Trading Platform | Capital.com"
 }
