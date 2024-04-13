@@ -96,9 +96,7 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
 
     it('JS/TC_01.02!00_101_Auth | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
       tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
-
-     /*  tradingPlatform.getLogo().should("be.visible");
-      cy.title().should("eq", tradingPlatformData.tradingPlatformTitle); */
+      
       tradingPlatform.isOpenedTradingPlatform()
       verifyVisitTraidingPlatform();
     });
