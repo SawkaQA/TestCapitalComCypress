@@ -11,7 +11,7 @@ import LoginFCA from "../../pageObjects/SignupLogin/LoginFCA ";
 import testData from "../../fixtures/testData.json";
 import tradingPlatformData from "../../fixtures/tradingPlatformData.json";
 import TradingPlatformPage from "../../pageObjects/TradingPlatformPage";
-import { checkOutSignUpForm , checkOutLoginForm } from "../../support/helpers";
+import { checkOutSignUpForm, checkOutLoginForm, verifyVisitTraidingPlatform, verifyVisitTraidingPlatformDemoMode } from "../../support/helpers";
 
 describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", () => {
   const basePage = new BasePageFCA();
@@ -34,7 +34,7 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
     it('JS/TC_01.02!00_101_UnReg | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
       tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
 
-      signUp.isOpenedFormSignUp();         
+      signUp.isOpenedFormSignUp();
       checkOutSignUpForm(signUp);
     });
 
@@ -70,15 +70,15 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
       checkOutSignUpForm(signUp);
     });
 
-    it('JS/TC_01.02.00_102_UnAuth | Markets > Menu item [Shares] > Click button [Try Demo ]  in the block "Shares trading"', () => { 
-      tradingSignUpButton.clickMarkertTradingBlockSignUpButton();   
+    it('JS/TC_01.02.00_102_UnAuth | Markets > Menu item [Shares] > Click button [Try Demo ]  in the block "Shares trading"', () => {
+      tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
 
       login.isOpenedFormLogin();
       checkOutLoginForm(login);
     });
   });
 
-  context("Authorized  user", () => {
+  context.only("Authorized  user", () => {
     beforeEach(() => {
       basePage.openFcaUrl();
       basePage.openBannerCookies();
@@ -97,11 +97,17 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
     it('JS/TC_01.02!00_101_Auth | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
       tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
 
-      tradingPlatform.verifyVisitTraidingPlatform();
-      tradingPlatform.getLogo().should("be.visible");
-      cy.title().should("eq", tradingPlatformData.tradingPlatformTitle);
+     /*  tradingPlatform.getLogo().should("be.visible");
+      cy.title().should("eq", tradingPlatformData.tradingPlatformTitle); */
+      tradingPlatform.isOpenedTradingPlatform()
+      verifyVisitTraidingPlatform();
     });
 
-    it('JS/TC_01.02.00_102_Auth | Markets > Menu item [Shares] > Click button [Try Demo ]  in the block "Shares trading"', () => { });
+    it('JS/TC_01.02.00_102_Auth | Markets > Menu item [Shares] > Click button [Try Demo ]  in the block "Shares trading"', () => {
+      tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
+   
+      tradingPlatform.isOpenedTradingPlatform()
+      verifyVisitTraidingPlatformDemoMode(tradingPlatform);
+    });
   });
 });

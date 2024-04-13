@@ -20,18 +20,17 @@ class LoginFCA {
   //Methods
 
   isOpenedFormLogin() {
-    this.getFormLogin().should('be.visible');    
+    this.getFormLogin().should('be.visible');
     this.getHeadingFormLogin().invoke('text').then(actualText => {
       if (actualText.trim() !== 'Login') {
         cy.log('ER: Login');
         cy.log(`AR: ${actualText}`);
-        throw new Error(`Bug#04 ${actualText} Form is opened instead Login Form`);
+        throw new Error(`Bug! ${actualText} Form is opened instead Login Form`);
       } else {
         cy.log('Login Form should be opened');
       }
     });
   }
- 
 
   closeFormLogin() {
     this.getCloseButtonForm().click()

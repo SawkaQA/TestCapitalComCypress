@@ -7,9 +7,15 @@ class TradingPlatformPage {
   getLogo = () => cy.get('topbar .logo');
 
 
+  isOpenedTradingPlatform() {
+    this.getLogo().should("be.visible");
+    cy.title().should("eq", tradingPlatformData.tradingPlatformTitle);
+  }
+
+
   verifyVisitTraidingPlatform() {
     cy.url().should('contain', tradingPlatformData.tradingPlatformBaseUrl);
-  }  
+  }
 
   clicktBtnAccountInfo() {
     this.getBtnAccountInfo().click();
