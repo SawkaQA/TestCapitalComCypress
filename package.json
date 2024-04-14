@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "cy:run": "npx cypress run --config video=false --browser chrome --env allure=true",
-    "cy:tests:run": "npx cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_11_Education/**.js' --env allure=true",
-    "cy:run:vika": "npx cypress run --spec 'cypress/e2e/US_11_Education/US_11.03.04_Education_Position_Trading.cy.js' --env allure=true",
+    "cy:tests:run": "npx cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_01.02_Markets/**.js' --env allure=true",
+    "cy:run:education": "npx cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_11_Education/**.js' --env allure=false",
+    "cy:run:vika": "npx cypress run --spec 'cypress/e2e/US_11_Education/US_11.03.04_Education_Position_Trading.cy.js' --env allure=false",
     "cy:run:markets": "npx cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_01.02.00_Markets/**.js' --env allure=true",
+    
     "allure:report": "allure generate allure-results -o allure-report --clean && allure open",
     "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots cypress/videos || true",
     "allure:history": "mv -f allure-report/history allure-results/history && rm -r allure-report || true"
