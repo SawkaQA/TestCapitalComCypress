@@ -8,7 +8,7 @@
     "cy:tests:run": "npx cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_01.02_Markets/**.js' --env allure=true",
     "cy:run:education": "npx cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_11_Education/**.js' --env allure=false",
     "cy:run:vika": "npx cypress run --spec 'cypress/e2e/US_11_Education/US_11.03.04_Education_Position_Trading.cy.js' --env allure=false",
-    "cy:run:markets": "npx cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_01.02.00_Markets/**.js' --env allure=true",
+    "cy:run:markets": "npx cypress run --config video=false --browser chrome --spec 'cypress/e2e/US_01.02.00_Markets/**.js' --env allure=false",
     
     "allure:report": "allure generate allure-results -o allure-report --clean && allure open",
     "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots cypress/videos || true",
@@ -17,7 +17,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@shelex/cypress-allure-plugin": "^2.39.1",
     "allure-commandline": "^2.27.0",
     "allure-cypress": "^2.15.0",
     "cypress": "^13.7.1"
