@@ -1,5 +1,4 @@
 const { defineConfig } = require("cypress");
-//const allureWriter = require("@shelex/cypress-allure-plugin/writer");
 const { allureCypress } = require("allure-cypress/reporter");
 
 module.exports = defineConfig({
@@ -19,9 +18,7 @@ module.exports = defineConfig({
         baseUrl: "https://capital.com/",
        // baseUrlFca: "https://capital.com/en-gb",
         setupNodeEvents(on, config) {
-            allureCypress(on);
-            /* allureWriter(on, config);
-            return config; */
+            allureCypress(on);            
         },
     },
 });
