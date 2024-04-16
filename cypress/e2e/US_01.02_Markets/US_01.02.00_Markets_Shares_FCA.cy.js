@@ -101,7 +101,7 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
       verifyVisitTraidingPlatform();
     });
 
-    it('JS/TC_01.02.00_102_Auth | Markets > Menu item [Shares] > Click button [Try Demo ]  in the block "Shares trading"', () => {
+    it.only('JS/TC_01.02.00_102_Auth | Markets > Menu item [Shares] > Click button [Try Demo ]  in the block "Shares trading"', () => {
       tradingSignUpButton.clickMarkertTradingBlockSignUpButton();
    
       tradingPlatform.isOpenedTradingPlatform()

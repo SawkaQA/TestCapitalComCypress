@@ -21,6 +21,12 @@ class LoginFCA {
 
   isOpenedFormLogin() {
     this.getFormLogin().should('be.visible');
+    this.getHeadingFormLogin().should('have.text', 'Login')
+  }
+
+  /* //using this function marks a failed it() in the alluer report as broken
+  isOpenedFormLogin() {
+    this.getFormLogin().should('be.visible');
     this.getHeadingFormLogin().invoke('text').then(actualText => {
       if (actualText.trim() !== 'Login') {
         cy.log('ER: Login');
@@ -30,7 +36,7 @@ class LoginFCA {
         cy.log('Login Form should be opened');
       }
     });
-  }
+  } */
 
   closeFormLogin() {
     this.getCloseButtonForm().click()
@@ -57,7 +63,7 @@ class LoginFCA {
   verifyAccountLogin() {
     cy.url().should('contain', '/en-gb');
     this.getHeaderBtnMyAccount().should('have.attr', 'href', tradingPlatformData.tradingPlatformBaseUrl);
-  }
+  }  
 
 }
 
