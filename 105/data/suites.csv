@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Tue Apr 16 16:40:56 GMT 2024","Tue Apr 16 16:41:26 GMT 2024","30286","JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license","Authorized  user","","","","JS/TC_01.02.00_102_Auth | Markets > Menu item [Shares] > Click button [Try Demo ]  in the block ""Shares trading""",""
