@@ -19,11 +19,6 @@ class LoginFCA {
 
   //Methods
 
-  isOpenedFormLogin() {
-    this.getFormLogin().should('be.visible');
-    this.getHeadingFormLogin().should('have.text', 'Login')
-  }
-
   /* //using this function marks a failed it() in the alluer report as broken
   isOpenedFormLogin() {
     this.getFormLogin().should('be.visible');
