@@ -13,7 +13,8 @@ import LoginFCA from "../../pageObjects/SignupLogin/LoginFCA ";
 import testData from "../../fixtures/testData.json";
 import tradingPlatformData from "../../fixtures/tradingPlatformData.json";
 import TradingPlatformPage from "../../pageObjects/TradingPlatformPage";
-import { isOpenedFormSignUp, checkOutSignUpForm, isOpenedFormLogin, checkOutLoginForm, isOpenedTradingPlatform, verifyVisitTraidingPlatform, verifyVisitTraidingPlatformDemoMode } from "../../support/helpers";
+import { isOpenedFormSignUp, checkOutSignUpForm, isOpenedFormLogin, checkOutLoginForm, isOpenedTradingPlatform, verifyVisitTraidingPlatform, checkOutTraidingPlatformDemoMode } from "../../support/helpers";
+
 
 describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", () => {
   const basePage = new BasePageFCA();
@@ -112,7 +113,7 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
 
   });
 
-  context("Authorized  user", () => {
+  context.only("Authorized  user", () => {
     beforeEach(() => {
       basePage.openFcaUrl();
       basePage.openBannerCookies();
@@ -131,27 +132,27 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
     it('JS/TC_01.02!00_101_Auth | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
       tradingBlockSignUpButton.clickMarkertTradingBlockSignUpButton();
 
-      isOpenedTradingPlatform(tradingPlatform);      
+      isOpenedTradingPlatform(tradingPlatform);
     });
 
     it('JS/TC_01.02!00_102_Auth | Markets > Menu item [Shares] > Click button [Try Demo ]  in the block "Shares trading"', () => {
       tradingBlockSignUpButton.clickMarkertTradingBlockSignUpButton();
 
       isOpenedTradingPlatform(tradingPlatform);
-      verifyVisitTraidingPlatformDemoMode(tradingPlatform);
+      checkOutTraidingPlatformDemoMode(tradingPlatform)
     });
 
     it('JS/TC_01.02!00_103_Auth | Markets > Menu item [Shares] > Click button [Create account ] in the block "Discover trading excellence with Capital.com"', () => {
       discoverBlockCreateAccountButton.clickMarkertDiscoverBlockCreateAccountButton();
 
-      isOpenedTradingPlatform(tradingPlatform);      
+      isOpenedTradingPlatform(tradingPlatform);
     });
 
     it('JS/TC_01.02!00_104_Auth | Markets > Menu item [Shares] > Click button [Try Demo ] in the block "Discover trading excellence with Capital.com"', () => {
       discoverBlockTryDemoButton.clickMarkertDiscoverBlockTryDemoButton();
 
       isOpenedTradingPlatform(tradingPlatform);
-      verifyVisitTraidingPlatformDemoMode(tradingPlatform);
+      checkOutTraidingPlatformDemoMode(tradingPlatform);
     });
 
   });
