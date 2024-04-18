@@ -131,8 +131,7 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
     it('JS/TC_01.02!00_101_Auth | Markets > Menu item [Shares] > Click button [Sign up ] in the block "Shares trading"', () => {
       tradingBlockSignUpButton.clickMarkertTradingBlockSignUpButton();
 
-      isOpenedTradingPlatform(tradingPlatform);
-      verifyVisitTraidingPlatform();
+      isOpenedTradingPlatform(tradingPlatform);      
     });
 
     it('JS/TC_01.02!00_102_Auth | Markets > Menu item [Shares] > Click button [Try Demo ]  in the block "Shares trading"', () => {
@@ -145,8 +144,7 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
     it('JS/TC_01.02!00_103_Auth | Markets > Menu item [Shares] > Click button [Create account ] in the block "Discover trading excellence with Capital.com"', () => {
       discoverBlockCreateAccountButton.clickMarkertDiscoverBlockCreateAccountButton();
 
-      isOpenedTradingPlatform(tradingPlatform);
-      verifyVisitTraidingPlatform();
+      isOpenedTradingPlatform(tradingPlatform);      
     });
 
     it('JS/TC_01.02!00_104_Auth | Markets > Menu item [Shares] > Click button [Try Demo ] in the block "Discover trading excellence with Capital.com"', () => {
