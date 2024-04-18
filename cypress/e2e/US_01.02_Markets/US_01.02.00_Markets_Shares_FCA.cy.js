@@ -113,7 +113,7 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
 
   });
 
-  context.only("Authorized  user", () => {
+  context("Authorized  user", () => {
     beforeEach(() => {
       basePage.openFcaUrl();
       basePage.openBannerCookies();
