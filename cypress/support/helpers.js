@@ -1,13 +1,23 @@
 import tradingPlatformData from "../fixtures/tradingPlatformData.json"
 
+export function isOpenedFormSignUp(signUp) {
+  signUp.getFormSignUp().should('be.visible');
+  signUp.getHeadingForm()
+  .should("be.visible")
+  .and('have.text', 'Sign up');
+}
+
 export function checkOutSignUpForm(signUp) {
   signUp.getLoginLinkForm()
     .should("be.visible")
     .and('have.text', 'Login');
-
   signUp.closeFormSignUp();
 }
 
+export function isOpenedFormLogin(login) {
+  login.getFormLogin().should('be.visible');
+  login.getHeadingFormLogin().should('have.text', 'Login');
+}
 
 export function checkOutLoginForm(login) {  
     login.getLinkSignUpFormLogin()
@@ -22,6 +32,11 @@ export function checkOutLoginForm(login) {
     login.getBtnContinueFormLogin().should("be.visible");
     login.closeFormLogin(); 
 };
+
+export function isOpenedTradingPlatform(tradingPlatform) {
+  tradingPlatform.getLogo().should("be.visible");
+  cy.title().should("eq", tradingPlatformData.tradingPlatformTitle);
+}
 
 export function verifyVisitTraidingPlatform() {
   cy.url().should('contain', tradingPlatformData.tradingPlatformBaseUrl);
