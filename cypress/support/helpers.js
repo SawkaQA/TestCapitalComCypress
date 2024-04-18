@@ -39,7 +39,7 @@ export function isOpenedTradingPlatform(tradingPlatform) {
 }
 
 export function verifyVisitTraidingPlatform() {
-  cy.url().should('contain', tradingPlatformData.tradingPlatformBaseUrl);
+  cy.url().should('include', tradingPlatformData.tradingPlatformBaseUrl);
 };
 
 

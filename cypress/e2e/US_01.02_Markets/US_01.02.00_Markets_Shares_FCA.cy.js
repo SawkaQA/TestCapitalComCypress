@@ -56,6 +56,13 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
       checkOutSignUpForm(signUp);
     });
 
+    it('JS/TC_01.02!00_104_UnReg | Markets > Menu item [Shares] > Click button [Try Demo ] in the block "Discover trading excellence with Capital.com"', () => {
+      discoverBlockTryDemoButton.clickMarkertDiscoverBlockTryDemoButton();
+
+      isOpenedFormSignUp(signUp);
+      checkOutSignUpForm(signUp);
+    });
+
   });
 
   context("Unauthorized user", () => {
@@ -96,6 +103,13 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
       checkOutSignUpForm(signUp);
     });
 
+    it('JS/TC_01.02!00_104_UnAuth | Markets > Menu item [Shares] > Click button [Try Demo ] in the block "Discover trading excellence with Capital.com"', () => {
+      discoverBlockTryDemoButton.clickMarkertDiscoverBlockTryDemoButton();
+
+      isOpenedFormLogin(login);
+      checkOutLoginForm(login);
+    });
+
   });
 
   context("Authorized  user", () => {
@@ -133,6 +147,13 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
 
       isOpenedTradingPlatform(tradingPlatform);
       verifyVisitTraidingPlatform();
+    });
+
+    it('JS/TC_01.02!00_104_Auth | Markets > Menu item [Shares] > Click button [Try Demo ] in the block "Discover trading excellence with Capital.com"', () => {
+      discoverBlockTryDemoButton.clickMarkertDiscoverBlockTryDemoButton();
+
+      isOpenedTradingPlatform(tradingPlatform);
+      verifyVisitTraidingPlatformDemoMode(tradingPlatform);
     });
 
   });
