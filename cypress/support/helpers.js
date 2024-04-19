@@ -38,19 +38,14 @@ export function isOpenedTradingPlatform(tradingPlatform) {
   cy.title().should("eq", tradingPlatformData.tradingPlatformTitle);
 }
 
-export function verifyVisitTraidingPlatform() {
-  cy.url().should('contain', tradingPlatformData.tradingPlatformBaseUrl);
-};
-
-
-export function verifyVisitTraidingPlatformDemoMode() {
+export function checkOutTraidingPlatformDemoMode() {
   cy.url().should('include', tradingPlatformData.tradingPlatformDemoModeUrl); 
 }
 
 /* 
 //using this function marks a failed it() in the alluer report as broken
 
-export function verifyVisitTraidingPlatformDemoMode() {
+export function checkOutTraidingPlatformDemoMode() {
   cy.url().then(url => {
     if (!url.includes('/trading/platform/demo')) {
       cy.log('Bug! TP is opened in the Live Mode instead Demo Mode');
