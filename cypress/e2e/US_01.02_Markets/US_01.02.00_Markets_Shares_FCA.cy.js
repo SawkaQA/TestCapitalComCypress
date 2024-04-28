@@ -14,6 +14,7 @@ import testData from "../../fixtures/testData.json";
 import tradingPlatformData from "../../fixtures/tradingPlatformData.json";
 import TradingPlatformPage from "../../pageObjects/TradingPlatformPage";
 import { isOpenedFormSignUp, checkOutSignUpForm, isOpenedFormLogin, checkOutLoginForm, isOpenedTradingPlatform, verifyVisitTraidingPlatform, checkOutTraidingPlatformDemoMode } from "../../support/helpers";
+import MarketsTableTradingInstrumentsFCA from "../../pageObjects/MarketsTableTradingInstrumentsFCA";
 
 
 describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", () => {
@@ -26,6 +27,7 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
   const signUp = new SignUpFCA();
   const login = new LoginFCA();
   const tradingPlatform = new TradingPlatformPage();
+  const marketsTableTradingInstruments = new MarketsTableTradingInstrumentsFCA();
 
   context("Unregistered user", () => {
     beforeEach(() => {
@@ -62,6 +64,12 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
 
       isOpenedFormSignUp(signUp);
       checkOutSignUpForm(signUp);
+    });
+
+    it.only('JS/TC_01.02!00_105_UnReg | Markets > Menu item [Shares] > Click two random trading instruments on the widget "Trading instrument"', () => {
+      marketsTableTradingInstruments.isVisibleMarketsTableTradingInstruments();
+      marketsTableTradingInstruments.clickSortMenu();
+      marketsTableTradingInstruments.clickSortMenuItem();
     });
 
   });
