@@ -68,8 +68,10 @@ describe("JS/US_01.02!00 | Menu [Markets] > Menu item [Shares], FCA license", ()
 
     it.only('JS/TC_01.02!00_105_UnReg | Markets > Menu item [Shares] > Click two random trading instruments on the widget "Trading instrument"', () => {
       marketsTableTradingInstruments.isVisibleMarketsTableTradingInstruments();
-      marketsTableTradingInstruments.clickSortMenu();
-      marketsTableTradingInstruments.clickSortMenuItem();
+      //marketsTableTradingInstruments.clickSortMenu();
+      //marketsTableTradingInstruments.clickSortMenuItem();
+     // marketsTableTradingInstruments.clickAnyTradingInstrument();
+      marketsTableTradingInstruments.clickTopFallersTradingInstrument();
     });
 
   });
